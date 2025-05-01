@@ -1,12 +1,12 @@
+import { ChatWindow } from "@/components/chat/ChatWindow";
+import { ChatSidebar } from "@/components/chat/ChatSidebar";
 import { useState } from "react";
-import { Menu, MessageSquare, Home, Settings, User, Bell } from "lucide-react";
-import { ChatSidebar } from "../chat/ChatSidebar";
-import { ChatWindow } from "../chat/ChatWindow";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
+import { Menu, Home, User, Bell, MessageSquare } from "lucide-react";
 import { Link } from "wouter";
 
-export function MessagingLayout() {
+export default function Messages() {
   const { isMobile } = useMobile();
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile);
   const { user, conversations } = useChatContext();
@@ -31,7 +31,7 @@ export function MessagingLayout() {
           >
             <Menu className="h-6 w-6" />
           </button>
-          <div className="font-semibold text-lg">Messenger</div>
+          <div className="font-semibold text-lg">Messages</div>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
@@ -61,8 +61,10 @@ export function MessagingLayout() {
           ></div>
         )}
 
-        {/* Chat Sidebar */}
-        <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+        {/* Chat Sidebar - always visible on this page */}
+        <div className={`${isMobile ? (sidebarOpen ? 'block' : 'hidden') : 'block'}`}>
+          <ChatSidebar isOpen={true} onClose={() => setSidebarOpen(false)} />
+        </div>
 
         {/* Main Chat Window */}
         <ChatWindow />
@@ -79,7 +81,7 @@ export function MessagingLayout() {
           </div>
           
           <div className="flex-1 text-center">
-            <Link href="/messages" className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
+            <Link href="/messages" className="flex flex-col items-center p-2 rounded-md text-primary-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
               <MessageSquare className="h-6 w-6" />
               <span className="text-xs mt-1">Messages</span>
             </Link>
@@ -110,5 +112,3 @@ export function MessagingLayout() {
     </div>
   );
 }
-
-export default MessagingLayout;
