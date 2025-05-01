@@ -1,12 +1,15 @@
 import { ChatWindow } from "@/components/chat/ChatWindow";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
-import { Home, User, Bell, MessageSquare, Search, PlusIcon } from "lucide-react";
+import { Home, User, Bell, MessageSquare, Search, PlusIcon, Phone, Video, MoreVertical } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ConversationItem from "@/components/chat/ConversationItem";
+import AvatarWithInitials from "@/components/ui/avatar-with-initials";
+import { MessageInput } from "@/components/chat/MessageInput";
+import { MessageBubble } from "@/components/chat/MessageBubble";
 
 export default function Messages() {
   const { isMobile } = useMobile();
@@ -15,10 +18,26 @@ export default function Messages() {
     user, 
     conversations, 
     activeConversationId, 
-    setActiveConversationId 
+    setActiveConversationId,
+    messages
   } = useChatContext();
   
   const [searchQuery, setSearchQuery] = useState("");
+  const [isSurfaceDuoOrSmaller, setIsSurfaceDuoOrSmaller] = useState(true);
+  
+  // Surface Duo width is 540px, so we'll use 768px as our breakpoint
+  useEffect(() => {
+    const checkScreenWidth = () => {
+      setIsSurfaceDuoOrSmaller(window.innerWidth < 768);
+    };
+    
+    checkScreenWidth();
+    window.addEventListener('resize', checkScreenWidth);
+    
+    return () => {
+      window.removeEventListener('resize', checkScreenWidth);
+    };
+  }, []);
   
   // Calculate total unread messages from all conversations
   const unreadCount = conversations.reduce((total, conversation) => {
@@ -35,8 +54,13 @@ export default function Messages() {
 
   const handleConversationClick = (id: number) => {
     setActiveConversationId(id);
-    setLocation("/conversation");
+    if (isSurfaceDuoOrSmaller) {
+      setLocation("/conversation");
+    }
   };
+
+  // Find active conversation
+  const activeConversation = conversations.find(c => c.id === activeConversationId);
 
   return (
     <div className="h-[100dvh] flex flex-col">
@@ -66,7 +90,7 @@ export default function Messages() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Conversations List */}
-        <div className="bg-white w-full flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0">
+        <div className={`bg-white border-r border-gray-200 ${isSurfaceDuoOrSmaller ? 'w-full' : 'w-1/3 min-w-[320px]'} flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
           <div className="p-4 border-b border-gray-200">
             <div className="relative">
               <Input
@@ -101,6 +125,64 @@ export default function Messages() {
             </Button>
           </div>
         </div>
+
+        {/* Conversation Detail (Only visible on larger screens) */}
+        {!isSurfaceDuoOrSmaller && activeConversation && (
+          <div className="flex-1 flex flex-col h-[calc(100dvh-57px)]">
+            {/* Conversation Header */}
+            <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
+              <div className="flex items-center">
+                <AvatarWithInitials name={activeConversation.title} size="md" />
+                <div className="ml-3">
+                  <div className="font-medium text-gray-900">{activeConversation.title}</div>
+                  {activeConversation.participants && (
+                    <div className="text-xs text-gray-500">
+                      {activeConversation.participants.length} members
+                    </div>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <button className="p-2 rounded-full hover:bg-gray-100">
+                  <Phone className="h-5 w-5 text-gray-600" />
+                </button>
+                <button className="p-2 rounded-full hover:bg-gray-100">
+                  <Video className="h-5 w-5 text-gray-600" />
+                </button>
+                <button className="p-2 rounded-full hover:bg-gray-100">
+                  <MoreVertical className="h-5 w-5 text-gray-600" />
+                </button>
+              </div>
+            </div>
+
+            {/* Messages Area */}
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+              {messages.map((message) => (
+                <MessageBubble 
+                  key={message.id} 
+                  message={message} 
+                  sender={message.senderId === user?.id ? user : message.sender}
+                />
+              ))}
+            </div>
+
+            {/* Message Input */}
+            <div className="p-4 border-t border-gray-200 bg-white">
+              <MessageInput />
+            </div>
+          </div>
+        )}
+
+        {/* Empty State when no conversation is selected */}
+        {!isSurfaceDuoOrSmaller && !activeConversation && (
+          <div className="flex-1 flex items-center justify-center bg-gray-50">
+            <div className="text-center p-8">
+              <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-1">No conversation selected</h3>
+              <p className="text-gray-500">Choose a conversation from the list to start chatting</p>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Footer */}
