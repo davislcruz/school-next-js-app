@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Smile, Send } from "lucide-react";
+import { Paperclip, Smile } from "lucide-react";
 import { useChatContext } from "@/context/ChatContext";
+import { FaPaperPlane } from "react-icons/fa";
 
 export function MessageInput() {
   const [message, setMessage] = useState("");
@@ -62,7 +63,7 @@ export function MessageInput() {
           className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors shadow-md border-2 border-primary-300 flex items-center justify-center"
           aria-label="Send message"
         >
-          <Send className="h-6 w-6 text-white" fill="white" strokeWidth={1.5} />
+          <FaPaperPlane size={20} className="text-white" />
         </button>
       </div>
     </div>
