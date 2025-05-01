@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, MessageSquare, Home, Settings, User } from "lucide-react";
 import { ChatSidebar } from "../chat/ChatSidebar";
 import { ChatWindow } from "../chat/ChatWindow";
 import { useMobile } from "@/hooks/use-mobile";
@@ -15,7 +15,7 @@ export function MessagingLayout() {
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="h-[100dvh] flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
@@ -73,6 +73,36 @@ export function MessagingLayout() {
         {/* Main Chat Window */}
         <ChatWindow />
       </div>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-gray-200 py-2 px-4 md:hidden">
+        <div className="flex justify-around items-center">
+          <button className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
+            <Home className="h-6 w-6" />
+            <span className="text-xs mt-1">Home</span>
+          </button>
+          
+          <button 
+            onClick={toggleSidebar}
+            className={`flex flex-col items-center p-2 rounded-md hover:text-primary-500 focus:outline-none focus:text-primary-500 ${
+              sidebarOpen ? "text-primary-500" : "text-gray-500"
+            }`}
+          >
+            <MessageSquare className="h-6 w-6" />
+            <span className="text-xs mt-1">Messages</span>
+          </button>
+          
+          <button className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
+            <Settings className="h-6 w-6" />
+            <span className="text-xs mt-1">Settings</span>
+          </button>
+          
+          <button className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
+            <User className="h-6 w-6" />
+            <span className="text-xs mt-1">Profile</span>
+          </button>
+        </div>
+      </footer>
     </div>
   );
 }
