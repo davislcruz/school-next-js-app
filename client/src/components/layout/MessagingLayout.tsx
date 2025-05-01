@@ -33,8 +33,8 @@ export function MessagingLayout() {
           <div className="font-semibold text-lg">Messenger</div>
         </div>
         <div className="flex items-center space-x-4">
-          <div className="relative">
-            <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <div className="relative flex items-center">
+            <button className="flex items-center justify-center p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
               <Bell className="h-6 w-6" />
             </button>
             {unreadCount > 0 && (
@@ -86,7 +86,7 @@ export function MessagingLayout() {
           </button>
           
           <div className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
-            <div className="relative">
+            <div className="relative flex items-center justify-center">
               <Bell className="h-6 w-6" />
               {unreadCount > 0 && (
                 <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs font-semibold">
