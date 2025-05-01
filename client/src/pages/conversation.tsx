@@ -1,49 +1,37 @@
 import { ChatWindow } from "@/components/chat/ChatWindow";
 import { useState } from "react";
+import { useLocation, Link } from "wouter";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
-import { Home, User, Bell, MessageSquare, Search, PlusIcon } from "lucide-react";
-import { Link, useLocation } from "wouter";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import ConversationItem from "@/components/chat/ConversationItem";
+import { ArrowLeft, Home, User, Bell, MessageSquare } from "lucide-react";
 
-export default function Messages() {
+export default function Conversation() {
   const { isMobile } = useMobile();
-  const [, setLocation] = useLocation();
-  const { 
-    user, 
-    conversations, 
-    activeConversationId, 
-    setActiveConversationId 
-  } = useChatContext();
-  
-  const [searchQuery, setSearchQuery] = useState("");
+  const [location, setLocation] = useLocation();
+  const { user, conversations, activeConversationId } = useChatContext();
   
   // Calculate total unread messages from all conversations
   const unreadCount = conversations.reduce((total, conversation) => {
     return total + (conversation.unreadCount || 0);
   }, 0);
 
-  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredConversations = conversations.filter((conversation) =>
-    conversation.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  const handleConversationClick = (id: number) => {
-    setActiveConversationId(id);
-    setLocation("/conversation");
-  };
+  // Find active conversation
+  const activeConversation = conversations.find(c => c.id === activeConversationId);
 
   return (
     <div className="h-[100dvh] flex flex-col">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
-          <div className="font-semibold text-lg">Messages</div>
+          <button
+            onClick={() => setLocation("/messages")}
+            className="mr-4 p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+          >
+            <ArrowLeft className="h-6 w-6" />
+          </button>
+          <div className="font-semibold text-lg">
+            {activeConversation ? activeConversation.title : "Conversation"}
+          </div>
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
@@ -65,42 +53,8 @@ export default function Messages() {
       </header>
 
       <div className="flex flex-1 overflow-hidden">
-        {/* Conversations List */}
-        <div className="bg-white w-full flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0">
-          <div className="p-4 border-b border-gray-200">
-            <div className="relative">
-              <Input
-                type="text"
-                placeholder="Search conversations"
-                className="pl-10"
-                value={searchQuery}
-                onChange={handleSearchChange}
-              />
-              <Search className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
-            </div>
-          </div>
-
-          <div className="flex-1 overflow-y-auto scrollbar-hide">
-            {filteredConversations.map((conversation) => (
-              <ConversationItem
-                key={conversation.id}
-                conversation={conversation}
-                isActive={activeConversationId === conversation.id}
-                onClick={() => handleConversationClick(conversation.id)}
-              />
-            ))}
-            {filteredConversations.length === 0 && (
-              <div className="p-4 text-center text-gray-500">No conversations found</div>
-            )}
-          </div>
-
-          <div className="p-4 border-t border-gray-200">
-            <Button className="w-full" size="sm">
-              <PlusIcon className="h-5 w-5 mr-2" />
-              New Conversation
-            </Button>
-          </div>
-        </div>
+        {/* Chat Window - Full Width */}
+        <ChatWindow />
       </div>
 
       {/* Footer */}
