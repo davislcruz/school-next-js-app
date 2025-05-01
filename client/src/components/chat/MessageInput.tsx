@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Paperclip, Smile, Send } from "lucide-react";
+import { Paperclip, Smile } from "lucide-react";
 import { useChatContext } from "@/context/ChatContext";
 
 export function MessageInput() {
@@ -59,10 +59,33 @@ export function MessageInput() {
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors shadow-lg border-2 border-primary-300 flex items-center justify-center send-button-glow"
+          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors shadow-md border-2 border-primary-300 flex items-center justify-center"
           aria-label="Send message"
         >
-          <Send className="h-5 w-5 fill-white stroke-white" strokeWidth={2} />
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            width="20" 
+            height="20" 
+            viewBox="0 0 24 24" 
+            className="text-white"
+          >
+            <path 
+              d="M22 2L11 13" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+            <path 
+              d="M22 2L15 22L11 13L2 9L22 2Z" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth="2" 
+              strokeLinecap="round" 
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
       </div>
     </div>
