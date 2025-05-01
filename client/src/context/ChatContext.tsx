@@ -88,8 +88,11 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     
     const lastMessage = sortedMessages[0];
     
-    // Generate a random unread count (0-5)
-    const unreadCount = Math.floor(Math.random() * 6);
+    // Set fixed unread count for conversations (for consistent notification display)
+    let unreadCount = 0;
+    if (conversation.id === 2) unreadCount = 2;  // Sarah Miller - 2 unread
+    if (conversation.id === 3) unreadCount = 1;  // Marketing Project - 1 unread
+    if (conversation.id === 5) unreadCount = 1;  // Client Support - 1 unread
     
     return {
       ...conversation,
