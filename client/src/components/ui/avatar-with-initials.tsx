@@ -26,14 +26,14 @@ const getInitials = (name: string) => {
 
 const getRandomColor = (name: string) => {
   const colors = [
-    "bg-primary-500",
-    "bg-purple-500",
-    "bg-green-500",
-    "bg-yellow-500",
-    "bg-red-500",
-    "bg-blue-500",
-    "bg-indigo-500",
-    "bg-pink-500",
+    "bg-blue-600",
+    "bg-purple-600",
+    "bg-emerald-600",
+    "bg-indigo-600",
+    "bg-rose-600",
+    "bg-teal-600",
+    "bg-violet-600",
+    "bg-slate-700",
   ];
   
   // Use a hash function to get a consistent color for the same name
