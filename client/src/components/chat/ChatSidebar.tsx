@@ -30,9 +30,9 @@ export function ChatSidebar({ isOpen, onClose }: ChatSidebarProps) {
 
   return (
     <div
-      className={`bg-white w-full md:w-80 border-r border-gray-200 flex flex-col transform ${
+      className={`bg-white w-80 border-r border-gray-200 flex flex-col transform ${
         isOpen ? "translate-x-0" : "-translate-x-full"
-      } md:translate-x-0 transition-transform duration-300 ease-in-out fixed md:relative top-0 bottom-0 left-0 z-30 h-[calc(100vh-110px)] md:h-[calc(100vh-57px)] pt-14 md:pt-0 pb-16 md:pb-0`}
+      } md:translate-x-0 transition-transform duration-300 ease-in-out fixed md:relative top-0 bottom-0 left-0 z-30 h-[calc(100dvh-57px)] md:h-[calc(100dvh-57px)] pb-16 md:pb-0`}
     >
       <div className="p-4 border-b border-gray-200">
         <div className="relative">
