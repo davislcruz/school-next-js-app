@@ -60,7 +60,7 @@ export function MessageInput() {
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors shadow-md border-2 border-primary-300 flex items-center justify-center"
+          className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors shadow-md border-2 border-blue-400 flex items-center justify-center"
           aria-label="Send message"
         >
           <FaPaperPlane size={20} className="text-white" />
