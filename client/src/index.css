@@ -80,3 +80,14 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
+
+/* Send button gradient effect */
+@keyframes send-button-glow {
+  0% { box-shadow: 0 0 5px 2px rgba(59, 130, 246, 0.3); }
+  50% { box-shadow: 0 0 8px 3px rgba(59, 130, 246, 0.5); }
+  100% { box-shadow: 0 0 5px 2px rgba(59, 130, 246, 0.3); }
+}
+
+.send-button-glow {
+  animation: send-button-glow 2s infinite ease-in-out;
+}
