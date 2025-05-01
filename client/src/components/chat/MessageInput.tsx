@@ -35,7 +35,7 @@ export function MessageInput() {
   return (
     <div className="bg-white border-t border-gray-200 p-4">
       <div className="flex items-end">
-        <div className="flex-1 mr-2">
+        <div className="flex-1 mr-3">
           <div className="relative bg-gray-100 rounded-lg">
             <textarea
               ref={textareaRef}
@@ -59,10 +59,16 @@ export function MessageInput() {
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
+          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full py-3 px-5 md:px-6 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors flex items-center justify-center shadow-lg transform hover:scale-105 active:scale-95 pulse-button"
+          aria-label="Send message"
         >
-          <Send className="h-5 w-5" />
+          <Send className="h-7 w-7" />
+          <span className="ml-2 font-medium hidden sm:inline">Send</span>
         </button>
+      </div>
+      {/* Send button tooltip for mobile */}
+      <div className="mt-1 text-center md:hidden">
+        <span className="text-xs text-gray-500">Tap the blue button to send</span>
       </div>
     </div>
   );
