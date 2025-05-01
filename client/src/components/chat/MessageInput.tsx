@@ -59,10 +59,9 @@ export function MessageInput() {
         </div>
         <button
           onClick={handleSubmit}
-          className="bg-primary-500 hover:bg-primary-600 text-white rounded-lg px-4 py-2 flex items-center focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
+          className="bg-primary-500 hover:bg-primary-600 text-white rounded-full p-3 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors"
         >
-          <Send className="h-5 w-5 mr-2" />
-          <span className="font-medium">Send</span>
+          <Send className="h-5 w-5" />
         </button>
       </div>
     </div>
