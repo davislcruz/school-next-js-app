@@ -24,11 +24,17 @@ export default function Messages() {
   
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileView, setIsMobileView] = useState(true);
+  const [isTabletView, setIsTabletView] = useState(false);
   
-  // Use 540px as breakpoint to include Surface Duo (540px) in split view
+  // Define our breakpoints
+  // Mobile: < 540px (smaller than Surface Duo)
+  // Tablet: >= 540px and < 768px (Surface Duo size)
+  // Desktop: >= 768px
   useEffect(() => {
     const checkScreenWidth = () => {
-      setIsMobileView(window.innerWidth < 540);
+      const width = window.innerWidth;
+      setIsMobileView(width < 540);
+      setIsTabletView(width >= 540 && width < 768);
     };
     
     checkScreenWidth();
@@ -90,7 +96,13 @@ export default function Messages() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Conversations List */}
-        <div className={`bg-white border-r border-gray-200 ${isMobileView ? 'w-full' : 'w-1/3 min-w-[320px]'} flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
+        <div className={`bg-white border-r border-gray-200 ${
+          isMobileView 
+            ? 'w-full' 
+            : isTabletView 
+              ? 'w-2/5 max-w-[200px]' 
+              : 'w-1/3 min-w-[280px]'
+        } flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
           <div className="p-4 border-b border-gray-200">
             <div className="relative">
               <Input
