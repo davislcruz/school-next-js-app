@@ -23,12 +23,12 @@ export default function Messages() {
   } = useChatContext();
   
   const [searchQuery, setSearchQuery] = useState("");
-  const [isSurfaceDuoOrSmaller, setIsSurfaceDuoOrSmaller] = useState(true);
+  const [isMobileView, setIsMobileView] = useState(true);
   
-  // Surface Duo width is 540px, so we'll use 768px as our breakpoint
+  // Use 540px as breakpoint to include Surface Duo (540px) in split view
   useEffect(() => {
     const checkScreenWidth = () => {
-      setIsSurfaceDuoOrSmaller(window.innerWidth < 768);
+      setIsMobileView(window.innerWidth < 540);
     };
     
     checkScreenWidth();
@@ -54,7 +54,7 @@ export default function Messages() {
 
   const handleConversationClick = (id: number) => {
     setActiveConversationId(id);
-    if (isSurfaceDuoOrSmaller) {
+    if (isMobileView) {
       setLocation("/conversation");
     }
   };
@@ -90,7 +90,7 @@ export default function Messages() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Conversations List */}
-        <div className={`bg-white border-r border-gray-200 ${isSurfaceDuoOrSmaller ? 'w-full' : 'w-1/3 min-w-[320px]'} flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
+        <div className={`bg-white border-r border-gray-200 ${isMobileView ? 'w-full' : 'w-1/3 min-w-[320px]'} flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
           <div className="p-4 border-b border-gray-200">
             <div className="relative">
               <Input
@@ -127,7 +127,7 @@ export default function Messages() {
         </div>
 
         {/* Conversation Detail (Only visible on larger screens) */}
-        {!isSurfaceDuoOrSmaller && activeConversation && (
+        {!isMobileView && activeConversation && (
           <div className="flex-1 flex flex-col h-[calc(100dvh-57px)]">
             {/* Conversation Header */}
             <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
@@ -161,7 +161,7 @@ export default function Messages() {
                 <MessageBubble 
                   key={message.id} 
                   message={message} 
-                  sender={message.senderId === user?.id ? user : message.sender}
+                  sender={message.sender_id === user?.id ? user : message.sender}
                 />
               ))}
             </div>
@@ -174,7 +174,7 @@ export default function Messages() {
         )}
 
         {/* Empty State when no conversation is selected */}
-        {!isSurfaceDuoOrSmaller && !activeConversation && (
+        {!isMobileView && !activeConversation && (
           <div className="flex-1 flex items-center justify-center bg-gray-50">
             <div className="text-center p-8">
               <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
