@@ -10,6 +10,7 @@ import ConversationItem from "@/components/chat/ConversationItem";
 import AvatarWithInitials from "@/components/ui/avatar-with-initials";
 import { MessageInput } from "@/components/chat/MessageInput";
 import { MessageBubble } from "@/components/chat/MessageBubble";
+import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 
 export default function Messages() {
   const { isMobile } = useMobile();
@@ -80,9 +81,9 @@ export default function Messages() {
             <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
               <Bell className="h-5 w-5" />
             </button>
-            {unreadCount > 0 && (
+            {TOTAL_UNREAD_COUNT > 0 && (
               <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-semibold">
-                {unreadCount > 99 ? '99+' : unreadCount > 9 ? '9+' : unreadCount}
+                {TOTAL_UNREAD_COUNT > 99 ? '99+' : TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
               </div>
             )}
           </div>
@@ -218,9 +219,9 @@ export default function Messages() {
             <div className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
               <div className="relative">
                 <Bell className="h-6 w-6" />
-                {unreadCount > 0 && (
+                {TOTAL_UNREAD_COUNT > 0 && (
                   <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs font-semibold">
-                    {unreadCount > 9 ? '9+' : unreadCount}
+                    {TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
                   </div>
                 )}
               </div>

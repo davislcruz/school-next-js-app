@@ -4,6 +4,7 @@ import { useLocation, Link } from "wouter";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
 import { ArrowLeft, Home, User, Bell, MessageSquare } from "lucide-react";
+import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 
 export default function Conversation() {
   const { isMobile } = useMobile();
@@ -38,9 +39,9 @@ export default function Conversation() {
             <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
               <Bell className="h-5 w-5" />
             </button>
-            {unreadCount > 0 && (
+            {TOTAL_UNREAD_COUNT > 0 && (
               <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-semibold">
-                {unreadCount > 99 ? '99+' : unreadCount > 9 ? '9+' : unreadCount}
+                {TOTAL_UNREAD_COUNT > 99 ? '99+' : TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
               </div>
             )}
           </div>
