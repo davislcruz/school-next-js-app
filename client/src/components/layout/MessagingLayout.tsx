@@ -24,7 +24,7 @@ export function MessagingLayout() {
   return (
     <div className="h-[100dvh] flex flex-col">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm">
+      <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
           <button
             onClick={toggleSidebar}
@@ -61,7 +61,7 @@ export function MessagingLayout() {
         {isMobile && sidebarOpen && (
           <div
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden h-[100dvh] w-full"
           ></div>
         )}
 
@@ -70,7 +70,7 @@ export function MessagingLayout() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-2 px-4 md:hidden">
+      <footer className="bg-white border-t border-gray-200 py-2 px-4 md:hidden z-20 relative">
         <div className="flex justify-around items-center">
           <div className="flex-1 text-center">
             <Link href="/" className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
