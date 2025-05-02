@@ -58,7 +58,7 @@ export function MessagingLayout() {
         {isMobile && sidebarOpen && (
           <div
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 z-10 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
           ></div>
         )}
 
