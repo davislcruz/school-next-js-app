@@ -77,11 +77,11 @@ export default function Messages() {
         </div>
         <div className="flex items-center space-x-4">
           <div className="relative">
-            <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
-              <Bell className="h-6 w-6" />
+            <button className="p-2 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
+              <Bell className="h-5 w-5" />
             </button>
             {unreadCount > 0 && (
-              <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-semibold">
+              <div className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-semibold">
                 {unreadCount > 99 ? '99+' : unreadCount}
               </div>
             )}
