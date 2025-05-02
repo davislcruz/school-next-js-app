@@ -179,7 +179,7 @@ export default function Messages() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[80px]">
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[140px] md:pb-[80px]">
               {messages.map((message) => (
                 <MessageBubble 
                   key={message.id} 
