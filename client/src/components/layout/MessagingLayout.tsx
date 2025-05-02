@@ -53,17 +53,17 @@ export function MessagingLayout() {
         </div>
       </header>
 
-      <div className="flex flex-1 overflow-hidden">
-        {/* Overlay for mobile */}
+      <div className="flex flex-1 overflow-hidden relative">
+        {/* Chat Sidebar - Positioned above the overlay */}
+        <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+
+        {/* Overlay for mobile - Positioned under the sidebar but above the chat window */}
         {isMobile && sidebarOpen && (
           <div
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
           ></div>
         )}
-
-        {/* Chat Sidebar */}
-        <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
         {/* Main Chat Window */}
         <ChatWindow />
