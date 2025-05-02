@@ -131,7 +131,7 @@ export default function Messages() {
             )}
           </div>
 
-          <div className="p-4 border-t border-gray-200">
+          <div className="p-4 border-t border-gray-200 bg-white sticky bottom-0 z-10">
             <Button className="w-full" size="sm">
               <PlusIcon className="h-5 w-5 mr-2" />
               New Conversation
@@ -180,7 +180,7 @@ export default function Messages() {
             </div>
 
             {/* Message Input */}
-            <div className="p-4 border-t border-gray-200 bg-white">
+            <div className={`p-4 border-t border-gray-200 bg-white ${isMobileView ? 'mb-[60px]' : ''}`}>
               <MessageInput />
             </div>
           </div>

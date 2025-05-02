@@ -59,6 +59,9 @@ export default function Conversation() {
           <ChatWindow />
         </div>
       </div>
+      
+      {/* Add extra space at bottom for footer on mobile */}
+      {isMobile && <div className="h-[60px] md:hidden"></div>}
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-200 py-2 px-4 md:hidden">

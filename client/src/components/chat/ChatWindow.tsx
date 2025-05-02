@@ -120,7 +120,9 @@ export function ChatWindow() {
       </div>
 
       {/* Message input */}
-      <MessageInput />
+      <div className={`${isMobile ? 'mb-[60px]' : ''}`}>
+        <MessageInput />
+      </div>
     </div>
   );
 }
