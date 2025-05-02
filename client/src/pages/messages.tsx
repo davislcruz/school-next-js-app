@@ -1,5 +1,5 @@
 import { ChatWindow } from "@/components/chat/ChatWindow";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
 import { Home, User, Bell, MessageSquare, Search, PlusIcon, Phone, Video, MoreVertical } from "lucide-react";
@@ -26,6 +26,9 @@ export default function Messages() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileView, setIsMobileView] = useState(true);
   const [isTabletView, setIsTabletView] = useState(false);
+  
+  // Create a ref for the message container to auto-scroll to bottom
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Define our breakpoints
   // Mobile: < 540px (smaller than Surface Duo)
@@ -68,6 +71,13 @@ export default function Messages() {
 
   // Find active conversation
   const activeConversation = conversations.find(c => c.id === activeConversationId);
+  
+  // Auto-scroll to bottom of messages when messages change
+  useEffect(() => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
 
   return (
     <div className="h-[100dvh] flex flex-col">
@@ -177,6 +187,8 @@ export default function Messages() {
                   sender={message.sender_id === user?.id ? user : message.sender}
                 />
               ))}
+              {/* Invisible element for auto-scrolling to bottom */}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Message Input - removed container to use the one in MessageInput component */}
