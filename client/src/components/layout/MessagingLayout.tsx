@@ -57,11 +57,11 @@ export function MessagingLayout() {
         {/* Chat Sidebar - Positioned above the overlay */}
         <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
 
-        {/* Overlay for mobile - Positioned under the sidebar but above the chat window */}
+        {/* Overlay for mobile - Positioned under the sidebar but above everything else including message input */}
         {isMobile && sidebarOpen && (
           <div
             onClick={() => setSidebarOpen(false)}
-            className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+            className="fixed inset-0 bg-black bg-opacity-50 z-45 md:hidden"
           ></div>
         )}
 
