@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-type AvatarSize = "sm" | "md" | "lg";
+type AvatarSize = "sm" | "ms" | "md" | "lg";
 
 interface AvatarWithInitialsProps {
   name: string;
@@ -10,6 +10,7 @@ interface AvatarWithInitialsProps {
 
 const sizeClassMap: Record<AvatarSize, string> = {
   sm: "w-8 h-8 text-xs",
+  ms: "w-10 h-10 text-xs", // Medium-small - for conversation list
   md: "w-12 h-12 text-sm",
   lg: "w-16 h-16 text-base",
 };

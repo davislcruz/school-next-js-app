@@ -17,7 +17,7 @@ export function ConversationItem({ conversation, isActive, onClick }: Conversati
     >
       <AvatarWithInitials
         name={conversation.title}
-        size="md"
+        size="ms"
         className="mr-3"
       />
       <div className="flex-1 min-w-0">
