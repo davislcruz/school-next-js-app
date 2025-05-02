@@ -109,12 +109,12 @@ export default function Messages() {
         {/* Conversations List */}
         <div className={`bg-white border-r border-gray-200 ${
           isMobileView 
-            ? 'w-full' 
+            ? 'w-full z-30' 
             : isTabletView 
               ? 'w-2/5 max-w-[200px]' 
               : 'w-1/3 min-w-[280px]'
-        } flex flex-col h-[calc(100dvh-57px)] ${isMobileView ? 'pb-[76px]' : 'pb-0'}`}>
-          <div className="p-4 border-b border-gray-200">
+        } flex flex-col h-[calc(100dvh-57px)] ${isMobileView ? 'pb-[60px]' : 'pb-0'}`}>
+          <div className="p-4 border-b border-gray-200 bg-white relative z-30">
             <div className="relative">
               <Input
                 type="text"
@@ -141,7 +141,7 @@ export default function Messages() {
             )}
           </div>
 
-          <div className="p-4 border-t border-gray-200 bg-white sticky bottom-0 z-10">
+          <div className="p-4 border-t border-gray-200 bg-white sticky bottom-0 z-30">
             <Button className="w-full" size="sm">
               <PlusIcon className="h-5 w-5 mr-2" />
               New Conversation
@@ -179,7 +179,7 @@ export default function Messages() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[20px]">
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[60px]">
               {messages.map((message) => (
                 <MessageBubble 
                   key={message.id} 
