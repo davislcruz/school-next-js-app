@@ -103,7 +103,7 @@ export default function Messages() {
             : isTabletView 
               ? 'w-2/5 max-w-[200px]' 
               : 'w-1/3 min-w-[280px]'
-        } flex flex-col h-[calc(100dvh-57px)] pb-16 md:pb-0`}>
+        } flex flex-col h-[calc(100dvh-57px)] ${isMobileView ? 'pb-[76px]' : 'pb-0'}`}>
           <div className="p-4 border-b border-gray-200">
             <div className="relative">
               <Input

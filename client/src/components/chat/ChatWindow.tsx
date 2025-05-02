@@ -4,6 +4,7 @@ import { useChatContext } from "@/context/ChatContext";
 import MessageBubble from "./MessageBubble";
 import MessageInput from "./MessageInput";
 import AvatarWithInitials from "../ui/avatar-with-initials";
+import { useMobile } from "@/hooks/use-mobile";
 
 export function ChatWindow() {
   const { 
@@ -12,6 +13,7 @@ export function ChatWindow() {
     users,
     typing
   } = useChatContext();
+  const { isMobile } = useMobile();
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -75,7 +77,7 @@ export function ChatWindow() {
       </div>
 
       {/* Messages container */}
-      <div className="flex-1 p-4 overflow-y-auto bg-gray-50 scrollbar-hide">
+      <div className={`flex-1 p-4 overflow-y-auto bg-gray-50 scrollbar-hide ${isMobile ? 'pb-[76px]' : ''}`}>
         {Object.entries(messageGroups).map(([date, dateMessages]) => (
           <div key={date}>
             {/* Date separator */}

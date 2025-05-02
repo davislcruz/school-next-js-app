@@ -55,7 +55,9 @@ export default function Conversation() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Chat Window - Full Width */}
-        <ChatWindow />
+        <div className={`w-full ${isMobile ? 'pb-[76px]' : 'pb-0'}`}>
+          <ChatWindow />
+        </div>
       </div>
 
       {/* Footer */}
