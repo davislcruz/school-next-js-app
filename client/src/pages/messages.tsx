@@ -169,7 +169,7 @@ export default function Messages() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[80px]">
               {messages.map((message) => (
                 <MessageBubble 
                   key={message.id} 
@@ -179,10 +179,8 @@ export default function Messages() {
               ))}
             </div>
 
-            {/* Message Input */}
-            <div className={`p-4 border-t border-gray-200 bg-white ${isMobileView ? 'mb-[60px]' : ''}`}>
-              <MessageInput />
-            </div>
+            {/* Message Input - removed container to use the one in MessageInput component */}
+            <MessageInput />
           </div>
         )}
 

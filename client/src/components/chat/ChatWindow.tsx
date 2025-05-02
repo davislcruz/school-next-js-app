@@ -77,7 +77,7 @@ export function ChatWindow() {
       </div>
 
       {/* Messages container */}
-      <div className={`flex-1 p-4 overflow-y-auto bg-gray-50 scrollbar-hide ${isMobile ? 'pb-[76px]' : ''}`}>
+      <div className="flex-1 p-4 pb-[90px] overflow-y-auto bg-gray-50 scrollbar-hide">
         {Object.entries(messageGroups).map(([date, dateMessages]) => (
           <div key={date}>
             {/* Date separator */}
@@ -119,10 +119,8 @@ export function ChatWindow() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Message input */}
-      <div className={`${isMobile ? 'mb-[60px]' : ''}`}>
-        <MessageInput />
-      </div>
+      {/* Message input - using MessageInput component with built-in mobile padding */}
+      <MessageInput />
     </div>
   );
 }
