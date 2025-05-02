@@ -77,7 +77,7 @@ export function ChatWindow() {
       </div>
 
       {/* Messages container */}
-      <div className="flex-1 p-4 pb-[140px] md:pb-[90px] overflow-y-auto bg-gray-50 scrollbar-hide">
+      <div className="flex-1 p-4 pb-[90px] overflow-y-auto bg-gray-50 scrollbar-hide">
         {Object.entries(messageGroups).map(([date, dateMessages]) => (
           <div key={date}>
             {/* Date separator */}
