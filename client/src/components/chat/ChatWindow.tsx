@@ -18,7 +18,14 @@ export function ChatWindow() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      // Use a gentler scroll that won't disrupt the layout
+      messagesEndRef.current.scrollIntoView({
+        behavior: "auto",
+        block: "end",
+        inline: "nearest"
+      });
+    }
   }, [messages]);
 
   if (!activeConversation) {

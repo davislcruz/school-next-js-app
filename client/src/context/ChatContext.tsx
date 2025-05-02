@@ -100,7 +100,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       lastMessage: lastMessage?.content || "No messages yet",
       lastMessageTime: lastMessage 
         ? format(new Date(lastMessage.created_at), 
-            isToday(new Date(lastMessage.created_at)) 
+            isToday(lastMessage.created_at.toString()) 
               ? "h:mm a" 
               : "MM/dd/yyyy")
         : "",
@@ -160,11 +160,19 @@ export function useChatContext() {
 }
 
 // Helper function to check if a date is today
-function isToday(date: Date) {
-  const today = new Date();
-  return (
-    date.getDate() === today.getDate() &&
-    date.getMonth() === today.getMonth() &&
-    date.getFullYear() === today.getFullYear()
-  );
+function isToday(dateString: string | undefined) {
+  if (!dateString) return false;
+  
+  try {
+    const date = new Date(dateString);
+    const today = new Date();
+    return (
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear()
+    );
+  } catch (error) {
+    console.error("Error parsing date:", error);
+    return false;
+  }
 }

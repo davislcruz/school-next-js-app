@@ -75,7 +75,12 @@ export default function Messages() {
   // Auto-scroll to bottom of messages when messages change
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+      // Use a gentler scroll that won't disrupt the layout
+      messagesEndRef.current.scrollIntoView({ 
+        behavior: "auto", 
+        block: "end",
+        inline: "nearest"
+      });
     }
   }, [messages]);
 
