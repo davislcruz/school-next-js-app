@@ -34,7 +34,7 @@ export function MessageInput() {
   };
 
   return (
-    <div className="bg-white border-t border-gray-200 p-4 mb-0 sticky bottom-0 z-10">
+    <div className="bg-white border-t border-gray-200 p-4 mb-0 sticky bottom-0 z-40">
       <div className="flex items-end">
         <div className="flex-1 mr-2">
           <div className="relative bg-gray-100 rounded-lg">

@@ -74,13 +74,16 @@ export default function Messages() {
   
   // Auto-scroll to bottom of messages when messages change
   useEffect(() => {
-    if (messagesEndRef.current) {
-      // Use a gentler scroll that won't disrupt the layout
-      messagesEndRef.current.scrollIntoView({ 
-        behavior: "auto", 
-        block: "end",
-        inline: "nearest"
-      });
+    if (messagesEndRef.current && messages.length > 0) {
+      // Use a setTimeout to delay scrolling slightly
+      const timer = setTimeout(() => {
+        const container = messagesEndRef.current?.parentElement;
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
     }
   }, [messages]);
 
@@ -184,7 +187,7 @@ export default function Messages() {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[60px]">
+            <div className="flex-1 overflow-y-auto p-4 bg-gray-50 pb-[80px]">
               {messages.map((message) => (
                 <MessageBubble 
                   key={message.id} 

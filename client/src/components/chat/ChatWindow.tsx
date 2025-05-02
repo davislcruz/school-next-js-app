@@ -18,13 +18,16 @@ export function ChatWindow() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (messagesEndRef.current) {
-      // Use a gentler scroll that won't disrupt the layout
-      messagesEndRef.current.scrollIntoView({
-        behavior: "auto",
-        block: "end",
-        inline: "nearest"
-      });
+    if (messagesEndRef.current && messages.length > 0) {
+      // Use a setTimeout to delay scrolling slightly
+      const timer = setTimeout(() => {
+        const container = messagesEndRef.current?.parentElement;
+        if (container) {
+          container.scrollTop = container.scrollHeight;
+        }
+      }, 100);
+      
+      return () => clearTimeout(timer);
     }
   }, [messages]);
 
@@ -84,7 +87,7 @@ export function ChatWindow() {
       </div>
 
       {/* Messages container */}
-      <div className="flex-1 p-4 pb-[60px] overflow-y-auto bg-gray-50 scrollbar-hide">
+      <div className="flex-1 p-4 pb-[80px] overflow-y-auto bg-gray-50 scrollbar-hide">
         {Object.entries(messageGroups).map(([date, dateMessages]) => (
           <div key={date}>
             {/* Date separator */}
