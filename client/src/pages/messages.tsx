@@ -98,7 +98,7 @@ export default function Messages() {
           isMobile 
             ? 'w-full z-30' 
             : isTablet 
-              ? 'w-96' 
+              ? 'w-1/3' 
               : 'w-1/3 min-w-[280px]'
         } flex flex-col h-[calc(100dvh-57px)] ${isMobile ? 'pb-[60px]' : 'pb-0'}`}>
           <div className="p-4 border-b border-gray-200 bg-white relative z-30">
