@@ -9,9 +9,10 @@ import { PlusIcon } from "lucide-react";
 interface ChatSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  layoutMode?: 'mobile' | 'tablet' | 'desktop';
 }
 
-export function ChatSidebar({ isOpen, onClose }: ChatSidebarProps) {
+export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSidebarProps) {
   const { conversations, activeConversationId, setActiveConversationId } = useChatContext();
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -28,12 +29,21 @@ export function ChatSidebar({ isOpen, onClose }: ChatSidebarProps) {
     onClose(); // Close sidebar on mobile after selection
   };
 
+  const getLayoutClasses = () => {
+    if (layoutMode === 'tablet') {
+      return 'bg-white w-full h-full flex flex-col relative border-r border-gray-200';
+    }
+    if (layoutMode === 'desktop') {
+      return 'bg-white w-80 border-r border-gray-200 flex flex-col relative h-full';
+    }
+    // Mobile layout (default)
+    return `bg-white w-80 border-r border-gray-200 flex flex-col transform ${
+      isOpen ? "translate-x-0" : "-translate-x-full"
+    } transition-transform duration-300 ease-in-out fixed top-0 bottom-0 left-0 z-50 h-full pb-16`;
+  };
+
   return (
-    <div
-      className={`bg-white w-80 border-r border-gray-200 flex flex-col transform ${
-        isOpen ? "translate-x-0" : "-translate-x-full"
-      } lg:translate-x-0 transition-transform duration-300 ease-in-out fixed lg:relative top-0 bottom-0 left-0 z-50 h-full pb-16 lg:pb-0`}
-    >
+    <div className={getLayoutClasses()}>
       <div className="p-4 border-b border-gray-200">
         <div className="relative">
           <Input

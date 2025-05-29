@@ -61,26 +61,35 @@ export function MessagingLayout() {
 
         {/* Chat Content Area */}
         <div className="flex flex-1 overflow-hidden relative">
-          {/* Chat Sidebar - only show when open on mobile/tablet */}
-          {(isMobile || isTablet) && (
-            <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+          {/* Mobile Chat Sidebar - overlay style */}
+          {isMobile && (
+            <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
+          )}
+
+          {/* Tablet Chat Sidebar - side-by-side, 1/3 width */}
+          {isTablet && (
+            <div className="w-1/3">
+              <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
+            </div>
           )}
 
           {/* Desktop Chat Sidebar - always visible */}
           {isDesktop && (
-            <ChatSidebar isOpen={true} onClose={() => {}} />
+            <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="desktop" />
           )}
 
-          {/* Overlay for mobile/tablet */}
-          {(isMobile || isTablet) && sidebarOpen && (
+          {/* Overlay for mobile only */}
+          {isMobile && sidebarOpen && (
             <div
               onClick={() => setSidebarOpen(false)}
               className="fixed inset-0 bg-black bg-opacity-50 z-30 h-[100dvh] w-full"
             ></div>
           )}
 
-          {/* Main Chat Window */}
-          <ChatWindow />
+          {/* Main Chat Window - 2/3 width on tablet */}
+          <div className={`flex-1 ${isTablet ? 'w-2/3' : ''}`}>
+            <ChatWindow />
+          </div>
         </div>
 
         {/* Bottom Navigation - only show on mobile/tablet */}
