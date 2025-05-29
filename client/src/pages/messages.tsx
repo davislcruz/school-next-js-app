@@ -13,7 +13,7 @@ import { MessageBubble } from "@/components/chat/MessageBubble";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 
 export default function Messages() {
-  const { isMobile } = useMobile();
+  const { isMobile, isTablet, isDesktop } = useMobile();
   const [, setLocation] = useLocation();
   const { 
     user, 
@@ -24,30 +24,9 @@ export default function Messages() {
   } = useChatContext();
   
   const [searchQuery, setSearchQuery] = useState("");
-  const [isMobileView, setIsMobileView] = useState(true);
-  const [isTabletView, setIsTabletView] = useState(false);
   
   // Create a ref for the message container to auto-scroll to bottom
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  
-  // Define our breakpoints
-  // Mobile: < 540px (smaller than Surface Duo)
-  // Tablet: >= 540px and < 768px (Surface Duo size)
-  // Desktop: >= 768px
-  useEffect(() => {
-    const checkScreenWidth = () => {
-      const width = window.innerWidth;
-      setIsMobileView(width < 540);
-      setIsTabletView(width >= 540 && width < 768);
-    };
-    
-    checkScreenWidth();
-    window.addEventListener('resize', checkScreenWidth);
-    
-    return () => {
-      window.removeEventListener('resize', checkScreenWidth);
-    };
-  }, []);
   
   // Calculate total unread messages from all conversations
   const unreadCount = conversations.reduce((total, conversation) => {
@@ -64,7 +43,7 @@ export default function Messages() {
 
   const handleConversationClick = (id: number) => {
     setActiveConversationId(id);
-    if (isMobileView) {
+    if (isMobile) {
       setLocation("/conversation");
     }
   };
@@ -116,12 +95,12 @@ export default function Messages() {
       <div className="flex flex-1 overflow-hidden">
         {/* Conversations List */}
         <div className={`bg-white border-r border-gray-200 ${
-          isMobileView 
+          isMobile 
             ? 'w-full z-30' 
-            : isTabletView 
-              ? 'w-2/5 max-w-[200px]' 
+            : isTablet 
+              ? 'w-96' 
               : 'w-1/3 min-w-[280px]'
-        } flex flex-col h-[calc(100dvh-57px)] ${isMobileView ? 'pb-[60px]' : 'pb-0'}`}>
+        } flex flex-col h-[calc(100dvh-57px)] ${isMobile ? 'pb-[60px]' : 'pb-0'}`}>
           <div className="p-4 border-b border-gray-200 bg-white relative z-30">
             <div className="relative">
               <Input
@@ -158,7 +137,7 @@ export default function Messages() {
         </div>
 
         {/* Conversation Detail (Only visible on larger screens) */}
-        {!isMobileView && activeConversation && (
+        {!isMobile && activeConversation && (
           <div className="flex-1 flex flex-col h-[calc(100dvh-57px)]">
             {/* Conversation Header */}
             <div className="bg-white border-b border-gray-200 p-4 flex items-center justify-between">
@@ -205,7 +184,7 @@ export default function Messages() {
         )}
 
         {/* Empty State when no conversation is selected */}
-        {!isMobileView && !activeConversation && (
+        {!isMobile && !activeConversation && (
           <div className="flex-1 flex items-center justify-center bg-gray-50">
             <div className="text-center p-8">
               <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
@@ -216,9 +195,10 @@ export default function Messages() {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-2 px-4 md:hidden">
-        <div className="flex justify-around items-center">
+      {/* Footer - only show on mobile */}
+      {isMobile && (
+        <footer className="bg-white border-t border-gray-200 py-2 px-4">
+          <div className="flex justify-around items-center">
           <div className="flex-1 text-center">
             <Link href="/" className="flex flex-col items-center p-2 rounded-md text-gray-500 hover:text-primary-500 focus:outline-none focus:text-primary-500">
               <Home className="h-6 w-6" />
@@ -253,8 +233,9 @@ export default function Messages() {
               <span className="text-xs mt-1">Profile</span>
             </div>
           </div>
-        </div>
-      </footer>
+          </div>
+        </footer>
+      )}
     </div>
   );
 }
