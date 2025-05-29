@@ -195,8 +195,8 @@ export default function Messages() {
         )}
       </div>
 
-      {/* Footer - only show on mobile */}
-      {isMobile && (
+      {/* Footer - show on mobile and tablet */}
+      {(isMobile || isTablet) && (
         <footer className="bg-white border-t border-gray-200 py-2 px-4">
           <div className="flex justify-around items-center">
           <div className="flex-1 text-center">
