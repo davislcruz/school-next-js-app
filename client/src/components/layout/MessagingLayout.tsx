@@ -60,7 +60,7 @@ export function MessagingLayout() {
         )}
 
         {/* Chat Content Area */}
-        <div className="flex flex-1 overflow-hidden relative">
+        <div className="flex flex-1 overflow-hidden relative min-w-0">
           {/* Mobile Chat Sidebar - overlay style */}
           {isMobile && (
             <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
@@ -87,7 +87,7 @@ export function MessagingLayout() {
           )}
 
           {/* Main Chat Window */}
-          <div className="flex-1">
+          <div className="flex-1 min-w-0">
             <ChatWindow />
           </div>
         </div>

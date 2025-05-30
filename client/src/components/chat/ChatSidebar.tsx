@@ -31,10 +31,10 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
 
   const getLayoutClasses = () => {
     if (layoutMode === 'tablet') {
-      return 'bg-white w-full h-full flex flex-col relative border-r border-gray-200';
+      return 'bg-white h-full flex flex-col relative border-r border-gray-200 flex-shrink-0';
     }
     if (layoutMode === 'desktop') {
-      return 'bg-white w-80 border-r border-gray-200 flex flex-col relative h-full';
+      return 'bg-white w-80 border-r border-gray-200 flex flex-col relative h-full flex-shrink-0';
     }
     // Mobile layout (default)
     return `bg-white w-80 border-r border-gray-200 flex flex-col transform ${
