@@ -44,32 +44,6 @@ export function SideNavbar() {
           );
         })}
       </nav>
-      
-      <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
-        <div 
-          className="sidebar-avatar"
-          style={{ 
-            width: '48px',
-            height: '48px',
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontWeight: '600',
-            position: 'relative',
-            zIndex: 50
-          }}
-        >
-          {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
-        </div>
-        <div className="ml-3">
-          <div className="text-sm font-medium text-gray-900">
-            {user?.name || 'User'}
-          </div>
-          <div className="text-xs text-gray-500">Online</div>
-        </div>
-      </div>
     </aside>
   );
 }
