@@ -27,11 +27,14 @@ export function MessagingLayout() {
       {/* Header - show on all views, spans full width */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-4">
+            {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
+          </div>
           {/* Menu button only for mobile */}
           {isMobile && (
             <button
               onClick={toggleSidebar}
-              className="mr-4 p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -48,9 +51,6 @@ export function MessagingLayout() {
                 {TOTAL_UNREAD_COUNT > 99 ? '99+' : TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
               </div>
             )}
-          </div>
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
-            {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
           </div>
         </div>
       </header>
