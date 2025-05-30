@@ -9,7 +9,7 @@ export function BottomNavbar() {
     { href: "/", icon: Newspaper, label: "Story" },
     { href: "/profile", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages" },
-    { href: "/alerts", icon: Baby, label: "Kids", hasNotification: TOTAL_UNREAD_COUNT > 0 },
+    { href: "/alerts", icon: Baby, label: "Children", hasNotification: TOTAL_UNREAD_COUNT > 0 },
   ];
 
   return (
