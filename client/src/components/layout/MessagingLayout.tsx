@@ -60,22 +60,32 @@ export function MessagingLayout() {
         )}
 
         {/* Chat Content Area */}
-        <div className="flex flex-1 overflow-hidden relative min-w-0">
+        <div className="flex flex-1 overflow-hidden relative">
           {/* Mobile Chat Sidebar - overlay style */}
           {isMobile && (
             <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
           )}
 
-          {/* Tablet Chat Sidebar - side-by-side, 1/3 width */}
+          {/* Tablet Layout - Grid approach */}
           {isTablet && (
-            <div className="flex-none" style={{ width: '33.333333%' }}>
-              <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
-            </div>
+            <>
+              <div className="w-1/3 max-w-none overflow-hidden">
+                <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
+              </div>
+              <div className="w-2/3 max-w-none overflow-hidden">
+                <ChatWindow />
+              </div>
+            </>
           )}
 
           {/* Desktop Chat Sidebar - always visible */}
           {isDesktop && (
-            <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="desktop" />
+            <>
+              <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="desktop" />
+              <div className="flex-1 min-w-0">
+                <ChatWindow />
+              </div>
+            </>
           )}
 
           {/* Overlay for mobile only */}
@@ -86,10 +96,12 @@ export function MessagingLayout() {
             ></div>
           )}
 
-          {/* Main Chat Window */}
-          <div className="flex-1 min-w-0">
-            <ChatWindow />
-          </div>
+          {/* Main Chat Window for mobile only */}
+          {isMobile && (
+            <div className="flex-1 min-w-0">
+              <ChatWindow />
+            </div>
+          )}
         </div>
 
         {/* Bottom Navigation - only show on mobile/tablet */}
