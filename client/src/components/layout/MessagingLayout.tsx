@@ -24,9 +24,9 @@ export function MessagingLayout() {
   };
 
   return (
-    <div className="h-[100dvh] flex flex-col">
+    <div className="h-[100dvh] flex flex-col max-w-full overflow-hidden">
       {/* Header - show on all views, spans full width */}
-      <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
+      <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative min-w-0">
         <div className="flex items-center">
           {isMobile && showChatOnMobile ? (
             <button
@@ -60,12 +60,12 @@ export function MessagingLayout() {
       </header>
 
       {/* Content Area with Sidebar */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden min-w-0">
         {/* Desktop Side Navigation */}
         {isDesktop && <SideNavbar />}
 
         {/* Main Content Area */}
-        <div className="flex flex-col flex-1">
+        <div className="flex flex-col flex-1 min-w-0">
           {/* Chat Content Area */}
           <div className={`flex-1 overflow-hidden relative ${
             isTablet ? 'grid grid-cols-3' : 'flex'
