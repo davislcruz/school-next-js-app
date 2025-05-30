@@ -51,7 +51,7 @@ export function SideNavbar() {
         <AvatarWithInitials
           name={user?.name || 'User'}
           size="md"
-          className="w-12 h-12 bg-primary"
+          className="w-12 h-12 !bg-blue-600"
         />
         <div className="ml-3">
           <div className="text-sm font-medium text-gray-900">
