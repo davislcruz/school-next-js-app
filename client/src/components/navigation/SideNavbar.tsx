@@ -46,17 +46,15 @@ export function SideNavbar() {
         })}
       </nav>
       
-      <div className="border-t border-gray-200 p-4">
-        <div className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
-            {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
+      <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
+        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
+          {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
+        </div>
+        <div className="ml-3">
+          <div className="text-sm font-medium text-gray-900">
+            {user?.name || 'User'}
           </div>
-          <div className="ml-3">
-            <div className="text-sm font-medium text-gray-900">
-              {user?.name || 'User'}
-            </div>
-            <div className="text-xs text-gray-500">Online</div>
-          </div>
+          <div className="text-xs text-gray-500">Online</div>
         </div>
       </div>
     </aside>
