@@ -11,8 +11,9 @@ import { ChatProvider } from "./context/ChatContext";
 function Router() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route path="/" component={Messages} />
       <Route path="/messages" component={Messages} />
+      <Route path="/home" component={Home} />
       <Route component={NotFound} />
     </Switch>
   );
