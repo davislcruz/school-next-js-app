@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Phone, Video, MoreVertical } from "lucide-react";
+
 import { useChatContext } from "@/context/ChatContext";
 import MessageBubble from "./MessageBubble";
 import MessageInput from "./MessageInput";
@@ -73,17 +73,7 @@ export function ChatWindow() {
             </div>
           </div>
         </div>
-        <div className="flex space-x-2">
-          <button className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-            <Phone className="h-5 w-5 text-gray-500" />
-          </button>
-          <button className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-            <Video className="h-5 w-5 text-gray-500" />
-          </button>
-          <button className="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-            <MoreVertical className="h-5 w-5 text-gray-500" />
-          </button>
-        </div>
+
       </div>
 
       {/* Messages container */}
