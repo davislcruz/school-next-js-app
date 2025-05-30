@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bell, ArrowLeft, ChevronRight, ChevronDown, Heart } from "lucide-react";
+import { Bell, ArrowLeft, ChevronRight, ChevronDown, Heart, MessageCircle } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
 import { BottomNavbar } from "@/components/navigation/BottomNavbar";
@@ -25,7 +25,8 @@ const stories = [
     content: "Amazing day at the park with the kids! The weather was perfect for our picnic.",
     hasImage: true,
     likes: 24,
-    liked: true
+    liked: true,
+    comments: 8
   },
   {
     id: 2,
@@ -37,7 +38,8 @@ const stories = [
     content: "Just finished the community cleanup project. So proud of our neighborhood coming together!",
     hasImage: false,
     likes: 18,
-    liked: false
+    liked: false,
+    comments: 5
   }
 ];
 
@@ -221,6 +223,12 @@ export default function Home() {
                             >
                               <Heart className={`w-5 h-5 md:w-6 md:h-6 lg:w-6 lg:h-6 ${story.liked ? 'fill-current' : ''}`} />
                               <span className="font-semibold text-sm md:text-base lg:text-base">{story.likes} likes</span>
+                            </button>
+                            <button
+                              className="flex items-center space-x-2 text-gray-400 hover:text-gray-600 transition-colors"
+                            >
+                              <MessageCircle className="w-5 h-5 md:w-6 md:h-6 lg:w-6 lg:h-6" />
+                              <span className="font-semibold text-sm md:text-base lg:text-base">{story.comments} comments</span>
                             </button>
                           </div>
                         </CardContent>
