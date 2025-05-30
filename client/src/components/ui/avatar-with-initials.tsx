@@ -25,43 +25,26 @@ const getInitials = (name: string) => {
     .substring(0, 2);
 };
 
-const getRandomColor = (name: string) => {
-  const colors = [
-    "bg-blue-600",
-    "bg-purple-600",
-    "bg-emerald-600",
-    "bg-indigo-600",
-    "bg-rose-600",
-    "bg-teal-600",
-    "bg-violet-600",
-    "bg-slate-700",
+const getRandomGradient = (name: string) => {
+  const gradients = [
+    "from-purple-500 to-pink-500",
+    "from-blue-500 to-purple-500", 
+    "from-green-500 to-blue-500",
+    "from-yellow-500 to-orange-500",
+    "from-pink-500 to-red-500",
+    "from-indigo-500 to-purple-500",
+    "from-teal-500 to-green-500",
+    "from-orange-500 to-red-500",
+    "from-cyan-500 to-blue-500",
+    "from-violet-500 to-purple-500"
   ];
   
-  // Use a hash function to get a consistent color for the same name
+  // Use a hash function to get a consistent gradient for the same name
   const hash = name.split("").reduce((acc, char) => {
     return acc + char.charCodeAt(0);
   }, 0);
   
-  return colors[hash % colors.length];
-};
-
-const getInlineBackgroundColor = (name: string) => {
-  const colors = [
-    "#2563eb", // blue-600
-    "#9333ea", // purple-600
-    "#059669", // emerald-600
-    "#4f46e5", // indigo-600
-    "#e11d48", // rose-600
-    "#0d9488", // teal-600
-    "#8b5cf6", // violet-600
-    "#374151", // slate-700
-  ];
-  
-  const hash = name.split("").reduce((acc, char) => {
-    return acc + char.charCodeAt(0);
-  }, 0);
-  
-  return colors[hash % colors.length];
+  return gradients[hash % gradients.length];
 };
 
 export function AvatarWithInitials({
@@ -70,20 +53,16 @@ export function AvatarWithInitials({
   className,
 }: AvatarWithInitialsProps) {
   const initials = getInitials(name);
-  const colorClass = getRandomColor(name);
-  const inlineColor = getInlineBackgroundColor(name);
+  const gradientClass = getRandomGradient(name);
   
   return (
     <div
       className={cn(
-        "rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0",
+        "rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0 bg-gradient-to-br",
+        gradientClass,
         sizeClassMap[size],
         className
       )}
-      style={{
-        backgroundColor: inlineColor,
-        background: inlineColor
-      }}
     >
       {initials}
     </div>
