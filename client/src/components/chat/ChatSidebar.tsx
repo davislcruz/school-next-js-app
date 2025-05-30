@@ -36,10 +36,8 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
     if (layoutMode === 'desktop') {
       return 'bg-white w-80 border-r border-gray-200 flex flex-col relative h-full flex-shrink-0';
     }
-    // Mobile layout (default)
-    return `bg-white w-80 border-r border-gray-200 flex flex-col transform ${
-      isOpen ? "translate-x-0" : "-translate-x-full"
-    } transition-transform duration-300 ease-in-out fixed top-0 bottom-0 left-0 z-50 h-full pb-16`;
+    // Mobile layout - fullscreen
+    return 'bg-white w-full h-full flex flex-col overflow-hidden';
   };
 
   return (
