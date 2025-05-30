@@ -7,8 +7,8 @@ export function BottomNavbar() {
 
   const navItems = [
     { href: "/", icon: Home, label: "Story" },
-    { href: "/messages", icon: MessageSquare, label: "Messages" },
     { href: "/alerts", icon: Bell, label: "Alerts", hasNotification: TOTAL_UNREAD_COUNT > 0 },
+    { href: "/messages", icon: MessageSquare, label: "Messages" },
     { href: "/profile", icon: User, label: "Profile" },
   ];
 
