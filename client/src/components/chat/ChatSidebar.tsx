@@ -30,7 +30,7 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
     setActiveConversationId(id);
     if (layoutMode === 'mobile') {
       // Navigate to conversation page on mobile
-      setLocation(`/conversation/${id}`);
+      setLocation('/conversation');
     }
     onClose(); // Close sidebar on mobile after selection
   };
