@@ -86,8 +86,8 @@ export function MessagingLayout() {
             ></div>
           )}
 
-          {/* Main Chat Window - 2/3 width on tablet */}
-          <div className={`flex-1 ${isTablet ? 'w-2/3' : ''}`}>
+          {/* Main Chat Window */}
+          <div className="flex-1">
             <ChatWindow />
           </div>
         </div>
