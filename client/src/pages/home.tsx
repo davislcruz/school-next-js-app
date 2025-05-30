@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <div className="h-[100dvh] flex flex-col">
       {/* Header - same as MessagingLayout */}
-      <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
+      <header className="bg-white border-b border-gray-200 py-4 px-6 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-2">
             {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
