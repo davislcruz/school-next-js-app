@@ -67,7 +67,7 @@ export default function Messages() {
   }, [messages]);
 
   return (
-    <div className="h-[100dvh] flex flex-col">
+    <div className="h-[100dvh] flex flex-col overflow-hidden">
       {/* Header */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center">
@@ -92,7 +92,7 @@ export default function Messages() {
         </div>
       </header>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden w-full">
         {/* Conversations List */}
         <div className={`bg-white border-r border-gray-200 ${
           isMobile 
