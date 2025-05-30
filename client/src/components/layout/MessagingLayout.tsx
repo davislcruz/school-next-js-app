@@ -27,8 +27,8 @@ export function MessagingLayout() {
       {/* Header - show on all views, spans full width */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
-          {/* Menu button only for mobile/tablet */}
-          {(isMobile || isTablet) && (
+          {/* Menu button only for mobile */}
+          {isMobile && (
             <button
               onClick={toggleSidebar}
               className="mr-4 p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
