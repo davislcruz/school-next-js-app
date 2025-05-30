@@ -1,4 +1,4 @@
-import { MessageSquare, Newspaper, Baby, Calendar, Settings } from "lucide-react";
+import { MessageSquare, Newspaper, Baby, Calendar } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useChatContext } from "@/context/ChatContext";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
@@ -13,7 +13,6 @@ export function SideNavbar() {
     { href: "/profile", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages", hasNotification: true },
     { href: "/alerts", icon: Baby, label: "Children", hasNotification: TOTAL_UNREAD_COUNT > 0 },
-    { href: "/settings", icon: Settings, label: "Settings" },
   ];
 
   return (
