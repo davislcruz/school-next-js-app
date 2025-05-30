@@ -44,6 +44,8 @@ const stories = [
 export default function Home() {
   const { isMobile, isTablet, isDesktop } = useMobile();
   const { user } = useChatContext();
+  const [selectedTab, setSelectedTab] = useState<'thisYear' | 'memories'>('thisYear');
+  const [activeNavTab, setActiveNavTab] = useState<string>('story');
   const [storiesState, setStoriesState] = useState(stories);
 
   const handleViewAllEvents = () => {
@@ -91,6 +93,32 @@ export default function Home() {
           </button>
         </div>
       </header>
+
+      {/* Tab Navigation */}
+      <div className="bg-white border-b border-gray-100 px-4 md:px-8 lg:px-8">
+        <div className="flex space-x-8 max-w-7xl mx-auto">
+          <button
+            onClick={() => setSelectedTab('thisYear')}
+            className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+              selectedTab === 'thisYear'
+                ? 'text-purple-600 border-b-2 border-purple-600'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            This year
+          </button>
+          <button
+            onClick={() => setSelectedTab('memories')}
+            className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+              selectedTab === 'memories'
+                ? 'text-purple-600 border-b-2 border-purple-600'
+                : 'text-gray-500 hover:text-gray-700'
+            }`}
+          >
+            Memories
+          </button>
+        </div>
+      </div>
 
       {/* Content Area with Sidebar */}
       <div className="flex flex-1 overflow-hidden">
