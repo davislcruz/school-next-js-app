@@ -3,6 +3,7 @@ import { Bell, ArrowLeft } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
 import { BottomNavbar } from "@/components/navigation/BottomNavbar";
+import { SideNavbar } from "@/components/navigation/SideNavbar";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 
 export default function Home() {
@@ -36,13 +37,22 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Blank content area */}
-      <div className="flex-1 bg-gray-50">
-        {/* Intentionally blank */}
-      </div>
+      {/* Content Area with Sidebar */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Desktop Side Navigation */}
+        {isDesktop && <SideNavbar />}
 
-      {/* Bottom Navigation - only show on mobile/tablet */}
-      {(isMobile || isTablet) && <BottomNavbar />}
+        {/* Main Content Area */}
+        <div className="flex flex-col flex-1">
+          {/* Blank content area */}
+          <div className="flex-1 bg-gray-50">
+            {/* Intentionally blank */}
+          </div>
+
+          {/* Bottom Navigation - only show on mobile/tablet */}
+          {(isMobile || isTablet) && <BottomNavbar />}
+        </div>
+      </div>
     </div>
   );
 }
