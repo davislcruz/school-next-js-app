@@ -1,4 +1,4 @@
-import { MessageSquare, Home, Bell, User, Settings } from "lucide-react";
+import { MessageSquare, Newspaper, Baby, Calendar, Settings } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useChatContext } from "@/context/ChatContext";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
@@ -9,10 +9,10 @@ export function SideNavbar() {
   const { user } = useChatContext();
 
   const navItems = [
-    { href: "/", icon: Home, label: "Home" },
+    { href: "/", icon: Newspaper, label: "Story" },
+    { href: "/profile", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages", hasNotification: true },
-    { href: "/alerts", icon: Bell, label: "Alerts", hasNotification: TOTAL_UNREAD_COUNT > 0 },
-    { href: "/profile", icon: User, label: "Profile" },
+    { href: "/alerts", icon: Baby, label: "Kids", hasNotification: TOTAL_UNREAD_COUNT > 0 },
     { href: "/settings", icon: Settings, label: "Settings" },
   ];
 
@@ -24,24 +24,22 @@ export function SideNavbar() {
           const Icon = item.icon;
           
           return (
-            <Link key={item.href} href={item.href}>
-              <a
-                className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
-                  isActive
-                    ? "bg-primary text-white"
-                    : "text-gray-700 hover:bg-gray-100"
-                }`}
-              >
-                <div className="relative">
-                  <Icon className="h-5 w-5 mr-3" />
-                  {item.hasNotification && (
-                    <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-3 w-3 flex items-center justify-center text-xs font-semibold">
-                      {item.href === "/alerts" && TOTAL_UNREAD_COUNT > 9 ? "9+" : ""}
-                    </div>
-                  )}
-                </div>
-                {item.label}
-              </a>
+            <Link 
+              key={item.href} 
+              href={item.href}
+              className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
+                isActive
+                  ? "bg-primary text-white"
+                  : "text-gray-700 hover:bg-gray-100"
+              }`}
+            >
+              <div className="relative">
+                <Icon className="h-5 w-5 mr-3" />
+                {item.hasNotification && (
+                  <div className="absolute -top-1 -right-1 bg-red-500 rounded-full h-2 w-2"></div>
+                )}
+              </div>
+              {item.label}
             </Link>
           );
         })}
