@@ -30,15 +30,7 @@ export function MessagingLayout() {
           <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-4">
             {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
           </div>
-          {/* Menu button only for mobile */}
-          {isMobile && (
-            <button
-              onClick={toggleSidebar}
-              className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-          )}
+
         </div>
         <div className="font-semibold text-lg">Messenger</div>
         <div className="flex items-center space-x-4">
@@ -69,10 +61,7 @@ export function MessagingLayout() {
           <div className={`flex-1 overflow-hidden relative ${
             isTablet ? 'grid grid-cols-3' : 'flex'
           }`}>
-            {/* Mobile Chat Sidebar - overlay style */}
-            {isMobile && (
-              <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
-            )}
+
 
             {/* Tablet Layout - Grid columns */}
             {isTablet && (
@@ -96,13 +85,7 @@ export function MessagingLayout() {
               </>
             )}
 
-            {/* Overlay for mobile only */}
-            {isMobile && sidebarOpen && (
-              <div
-                onClick={() => setSidebarOpen(false)}
-                className="fixed inset-0 bg-black bg-opacity-50 z-30 h-[100dvh] w-full"
-              ></div>
-            )}
+
 
             {/* Main Chat Window for mobile only */}
             {isMobile && (
