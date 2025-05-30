@@ -32,9 +32,7 @@ export function BottomNavbar() {
                 <div className="relative">
                   <Icon className="h-6 w-6" />
                   {item.hasNotification && (
-                    <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-4 w-4 flex items-center justify-center text-xs font-semibold">
-                      {TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
-                    </div>
+                    <div className="absolute -top-1 -right-1 bg-red-500 rounded-full h-2 w-2"></div>
                   )}
                 </div>
                 <span className="text-xs mt-1">{item.label}</span>
