@@ -48,7 +48,7 @@ export function MessagingLayout() {
             </button>
             {TOTAL_UNREAD_COUNT > 0 && (
               <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs font-semibold">
-                {TOTAL_UNREAD_COUNT > 99 ? '99+' : TOTAL_UNREAD_COUNT > 9 ? '9+' : TOTAL_UNREAD_COUNT}
+                {TOTAL_UNREAD_COUNT > 99 ? '99' : TOTAL_UNREAD_COUNT > 9 ? '9' : TOTAL_UNREAD_COUNT}
               </div>
             )}
           </div>
