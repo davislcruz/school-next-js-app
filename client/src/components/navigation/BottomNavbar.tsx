@@ -1,4 +1,4 @@
-import { MessageSquare, Newspaper, Baby, User } from "lucide-react";
+import { MessageSquare, Newspaper, Baby, Calendar } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 
@@ -7,7 +7,7 @@ export function BottomNavbar() {
 
   const navItems = [
     { href: "/", icon: Newspaper, label: "Story" },
-    { href: "/profile", icon: User, label: "Profile" },
+    { href: "/profile", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages" },
     { href: "/alerts", icon: Baby, label: "Kids", hasNotification: TOTAL_UNREAD_COUNT > 0 },
   ];
