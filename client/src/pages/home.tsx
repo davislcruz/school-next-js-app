@@ -131,7 +131,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="max-w-4xl mx-auto p-6 md:p-8 lg:p-10">
+            <div className="max-w-4xl mx-auto px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
               <div className="lg:col-span-8 lg:col-start-3 space-y-6">
                 {/* Next Event Section */}
                 <section>
