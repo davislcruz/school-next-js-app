@@ -60,19 +60,21 @@ export function MessagingLayout() {
         )}
 
         {/* Chat Content Area */}
-        <div className="flex flex-1 overflow-hidden relative">
+        <div className={`flex-1 overflow-hidden relative ${
+          isTablet ? 'grid grid-cols-3' : 'flex'
+        }`}>
           {/* Mobile Chat Sidebar - overlay style */}
           {isMobile && (
             <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
           )}
 
-          {/* Tablet Layout - Grid approach */}
+          {/* Tablet Layout - Grid columns */}
           {isTablet && (
             <>
-              <div className="w-1/3 max-w-none overflow-hidden">
+              <div className="col-span-1 overflow-hidden">
                 <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
               </div>
-              <div className="w-2/3 max-w-none overflow-hidden">
+              <div className="col-span-2 overflow-hidden">
                 <ChatWindow />
               </div>
             </>
