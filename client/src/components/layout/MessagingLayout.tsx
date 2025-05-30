@@ -23,7 +23,7 @@ export function MessagingLayout() {
   };
 
   return (
-    <div className="h-[100dvh] flex overflow-hidden">
+    <div className="h-[100dvh] flex">
       {/* Desktop Side Navigation */}
       {isDesktop && <SideNavbar />}
 
@@ -60,7 +60,7 @@ export function MessagingLayout() {
         )}
 
         {/* Chat Content Area */}
-        <div className="flex flex-1 overflow-hidden relative w-full">
+        <div className="flex flex-1 overflow-hidden relative">
           {/* Mobile Chat Sidebar - overlay style */}
           {isMobile && (
             <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
