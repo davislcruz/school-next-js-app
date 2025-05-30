@@ -87,10 +87,10 @@ export function MessagingLayout() {
 
 
 
-            {/* Main Chat Window for mobile only */}
+            {/* Main Content for mobile only - show conversation list */}
             {isMobile && (
               <div className="flex-1 min-w-0">
-                <ChatWindow />
+                <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="mobile" />
               </div>
             )}
           </div>
