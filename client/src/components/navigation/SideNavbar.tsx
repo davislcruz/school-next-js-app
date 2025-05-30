@@ -17,10 +17,6 @@ export function SideNavbar() {
 
   return (
     <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-gray-200 h-full">
-      <div className="flex items-center justify-center h-16 border-b border-gray-200">
-        <div className="font-bold text-xl text-primary">Messenger</div>
-      </div>
-      
       <nav className="flex-1 px-4 py-6 space-y-2">
         {navItems.map((item) => {
           const isActive = location === item.href;
