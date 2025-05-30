@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, Bell } from "lucide-react";
+import { Menu, Bell, ArrowLeft } from "lucide-react";
 import { ChatSidebar } from "../chat/ChatSidebar";
 import { ChatWindow } from "../chat/ChatWindow";
 import { SideNavbar } from "../navigation/SideNavbar";
@@ -11,7 +11,8 @@ import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 export function MessagingLayout() {
   const { isMobile, isTablet, isDesktop } = useMobile();
   const [sidebarOpen, setSidebarOpen] = useState(!isMobile && !isTablet);
-  const { user, conversations } = useChatContext();
+  const [showChatOnMobile, setShowChatOnMobile] = useState(false);
+  const { user, conversations, activeConversationId } = useChatContext();
   
   // Calculate total unread messages from all conversations
   const unreadCount = conversations.reduce((total, conversation) => {
@@ -27,10 +28,18 @@ export function MessagingLayout() {
       {/* Header - show on all views, spans full width */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-4">
-            {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
-          </div>
-
+          {isMobile && showChatOnMobile ? (
+            <button
+              onClick={() => setShowChatOnMobile(false)}
+              className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500 mr-4"
+            >
+              <ArrowLeft className="h-6 w-6" />
+            </button>
+          ) : (
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-4">
+              {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
+            </div>
+          )}
         </div>
         <div className="font-semibold text-lg">Messenger</div>
         <div className="flex items-center space-x-4">
@@ -87,10 +96,19 @@ export function MessagingLayout() {
 
 
 
-            {/* Main Content for mobile only - show conversation list */}
+            {/* Main Content for mobile only - toggle between conversation list and chat */}
             {isMobile && (
               <div className="flex-1 min-w-0">
-                <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="mobile" />
+                {showChatOnMobile ? (
+                  <ChatWindow />
+                ) : (
+                  <ChatSidebar 
+                    isOpen={true} 
+                    onClose={() => {}} 
+                    layoutMode="mobile" 
+                    onConversationSelect={() => setShowChatOnMobile(true)}
+                  />
+                )}
               </div>
             )}
           </div>

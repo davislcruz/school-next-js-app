@@ -11,9 +11,10 @@ interface ChatSidebarProps {
   isOpen: boolean;
   onClose: () => void;
   layoutMode?: 'mobile' | 'tablet' | 'desktop';
+  onConversationSelect?: () => void;
 }
 
-export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSidebarProps) {
+export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile', onConversationSelect }: ChatSidebarProps) {
   const { conversations, activeConversationId, setActiveConversationId } = useChatContext();
   const [searchQuery, setSearchQuery] = useState("");
   const [, setLocation] = useLocation();
@@ -28,9 +29,9 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
 
   const handleConversationClick = (id: number) => {
     setActiveConversationId(id);
-    if (layoutMode === 'mobile') {
-      // Navigate to conversation page on mobile
-      setLocation('/conversation');
+    if (layoutMode === 'mobile' && onConversationSelect) {
+      // Trigger mobile chat view
+      onConversationSelect();
     }
     onClose(); // Close sidebar on mobile after selection
   };
