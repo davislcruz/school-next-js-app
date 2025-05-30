@@ -45,6 +45,25 @@ const getRandomColor = (name: string) => {
   return colors[hash % colors.length];
 };
 
+const getInlineBackgroundColor = (name: string) => {
+  const colors = [
+    "#2563eb", // blue-600
+    "#9333ea", // purple-600
+    "#059669", // emerald-600
+    "#4f46e5", // indigo-600
+    "#e11d48", // rose-600
+    "#0d9488", // teal-600
+    "#8b5cf6", // violet-600
+    "#374151", // slate-700
+  ];
+  
+  const hash = name.split("").reduce((acc, char) => {
+    return acc + char.charCodeAt(0);
+  }, 0);
+  
+  return colors[hash % colors.length];
+};
+
 export function AvatarWithInitials({
   name,
   size = "md",
@@ -52,15 +71,19 @@ export function AvatarWithInitials({
 }: AvatarWithInitialsProps) {
   const initials = getInitials(name);
   const colorClass = getRandomColor(name);
+  const inlineColor = getInlineBackgroundColor(name);
   
   return (
     <div
       className={cn(
         "rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0",
         sizeClassMap[size],
-        colorClass,
         className
       )}
+      style={{
+        backgroundColor: inlineColor,
+        background: inlineColor
+      }}
     >
       {initials}
     </div>
