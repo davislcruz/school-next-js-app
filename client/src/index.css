@@ -97,3 +97,16 @@
   background-color: #2563eb !important;
   background: #2563eb !important;
 }
+
+/* Specific override for sidebar avatar */
+.sidebar-avatar {
+  background-color: #2563eb !important;
+  background: #2563eb !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Override any potential global div resets */
+div.sidebar-avatar {
+  background-color: #2563eb !important;
+}

@@ -49,7 +49,7 @@ export function SideNavbar() {
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
         <div 
-          className="force-avatar-bg"
+          className="sidebar-avatar"
           style={{ 
             width: '48px',
             height: '48px',
