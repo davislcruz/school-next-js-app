@@ -36,8 +36,8 @@ export function MessagingLayout() {
               <Menu className="h-6 w-6" />
             </button>
           )}
-          <div className="font-semibold text-lg">Messenger</div>
         </div>
+        <div className="font-semibold text-lg">Messenger</div>
         <div className="flex items-center space-x-4">
           <div className="relative">
             <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
