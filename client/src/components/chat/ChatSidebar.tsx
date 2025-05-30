@@ -71,7 +71,7 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
         )}
       </div>
 
-      <div className="p-4 border-t border-gray-200 flex items-center min-h-[80px]">
+      <div className="p-4 border-t border-gray-200 flex items-center h-[89px]">
         <Button className="w-full" size="sm">
           <PlusIcon className="h-5 w-5 mr-2" />
           New Conversation
