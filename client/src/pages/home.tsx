@@ -94,31 +94,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Tab Navigation */}
-      <div className="bg-white border-b border-gray-100 px-4 md:px-8 lg:px-8">
-        <div className="flex space-x-8 max-w-7xl mx-auto">
-          <button
-            onClick={() => setSelectedTab('thisYear')}
-            className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
-              selectedTab === 'thisYear'
-                ? 'text-purple-600 border-b-2 border-purple-600'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            This year
-          </button>
-          <button
-            onClick={() => setSelectedTab('memories')}
-            className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
-              selectedTab === 'memories'
-                ? 'text-purple-600 border-b-2 border-purple-600'
-                : 'text-gray-500 hover:text-gray-700'
-            }`}
-          >
-            Memories
-          </button>
-        </div>
-      </div>
+
 
       {/* Content Area with Sidebar */}
       <div className="flex flex-1 overflow-hidden">
@@ -128,7 +104,32 @@ export default function Home() {
         {/* Main Content Area */}
         <div className="flex flex-col flex-1">
           {/* Main Content */}
-          <div className="flex-1 bg-gray-50 overflow-y-auto">
+          <div className="flex-1 bg-white overflow-y-auto">
+            {/* Tab Navigation */}
+            <div className="border-b border-gray-100 px-4 md:px-8 lg:px-8">
+              <div className="grid grid-cols-2 max-w-7xl mx-auto">
+                <button
+                  onClick={() => setSelectedTab('thisYear')}
+                  className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+                    selectedTab === 'thisYear'
+                      ? 'text-purple-600 border-b-2 border-purple-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  This year
+                </button>
+                <button
+                  onClick={() => setSelectedTab('memories')}
+                  className={`py-3 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+                    selectedTab === 'memories'
+                      ? 'text-purple-600 border-b-2 border-purple-600'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  Memories
+                </button>
+              </div>
+            </div>
             <div className="max-w-4xl mx-auto p-4">
               <div className="lg:col-span-8 lg:col-start-3 space-y-6">
                 {/* Next Event Section */}
