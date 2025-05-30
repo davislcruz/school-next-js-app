@@ -66,9 +66,9 @@ export function MessagingLayout() {
             <ChatSidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} layoutMode="mobile" />
           )}
 
-          {/* Tablet Chat Sidebar - side-by-side, 1/3 width */}
+          {/* Tablet Chat Sidebar - side-by-side, wider for better usability */}
           {isTablet && (
-            <div className="w-1/3">
+            <div className="w-96">
               <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
             </div>
           )}
