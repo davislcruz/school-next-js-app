@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Bell, ArrowLeft, ChevronRight, Heart } from "lucide-react";
+import { Bell, ArrowLeft, ChevronRight, ChevronDown, Heart } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
 import { useChatContext } from "@/context/ChatContext";
 import { BottomNavbar } from "@/components/navigation/BottomNavbar";
@@ -72,9 +72,10 @@ export default function Home() {
       {/* Header - same as MessagingLayout */}
       <header className="bg-white border-b border-gray-200 py-2 px-4 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
-          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-4">
+          <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-2">
             {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
           </div>
+          <ChevronDown className="h-4 w-4 text-gray-600 mr-2" />
         </div>
         <div className="font-semibold text-lg">Messenger</div>
         <div className="flex items-center space-x-4">
