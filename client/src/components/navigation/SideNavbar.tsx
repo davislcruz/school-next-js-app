@@ -49,8 +49,19 @@ export function SideNavbar() {
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
         <div 
-          className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold z-50 relative"
-          style={{ backgroundColor: '#2563eb' }}
+          style={{ 
+            width: '48px',
+            height: '48px',
+            borderRadius: '50%',
+            backgroundColor: '#2563eb',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'white',
+            fontWeight: '600',
+            position: 'relative',
+            zIndex: 50
+          }}
         >
           {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
         </div>
