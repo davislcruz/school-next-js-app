@@ -74,7 +74,7 @@ export default function Home() {
       {/* Header - same as MessagingLayout */}
       <header className="bg-white border-b border-gray-200 py-4 px-6 flex items-center justify-between shadow-sm z-20 relative">
         <div className="flex items-center">
-          <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold mr-2">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white font-semibold mr-2">
             {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
           </div>
           <ChevronDown className="h-4 w-4 text-gray-600 mr-2" />
