@@ -68,7 +68,7 @@ export function MessagingLayout() {
 
           {/* Tablet Chat Sidebar - side-by-side, 1/3 width */}
           {isTablet && (
-            <div className="w-1/3">
+            <div className="flex-none" style={{ width: '33.333333%' }}>
               <ChatSidebar isOpen={true} onClose={() => {}} layoutMode="tablet" />
             </div>
           )}

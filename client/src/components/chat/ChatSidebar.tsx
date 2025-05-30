@@ -31,7 +31,7 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile' }: ChatSide
 
   const getLayoutClasses = () => {
     if (layoutMode === 'tablet') {
-      return 'bg-white h-full flex flex-col relative border-r border-gray-200 flex-shrink-0';
+      return 'bg-white h-full w-full flex flex-col border-r border-gray-200 overflow-hidden';
     }
     if (layoutMode === 'desktop') {
       return 'bg-white w-80 border-r border-gray-200 flex flex-col relative h-full flex-shrink-0';
