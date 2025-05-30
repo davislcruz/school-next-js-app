@@ -53,14 +53,16 @@ export function SideNavbar() {
             width: '48px',
             height: '48px',
             borderRadius: '50%',
-            backgroundColor: '#2563eb',
+            background: '#2563eb !important',
+            backgroundColor: '#2563eb !important',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'white',
+            color: 'white !important',
             fontWeight: '600',
             position: 'relative',
-            zIndex: 50
+            zIndex: 50,
+            border: '2px solid #2563eb'
           }}
         >
           {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
