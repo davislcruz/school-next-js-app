@@ -47,7 +47,7 @@ export function SideNavbar() {
       </nav>
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
-        <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
+        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
           {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
         </div>
         <div className="ml-3">
