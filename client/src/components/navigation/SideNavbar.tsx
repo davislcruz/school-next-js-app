@@ -48,11 +48,12 @@ export function SideNavbar() {
       </nav>
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
-        <AvatarWithInitials
-          name={user?.name || 'User'}
-          size="md"
-          className="w-12 h-12 !bg-blue-600 z-50 relative"
-        />
+        <div 
+          className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-semibold z-50 relative"
+          style={{ backgroundColor: '#2563eb' }}
+        >
+          {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
+        </div>
         <div className="ml-3">
           <div className="text-sm font-medium text-gray-900">
             {user?.name || 'User'}
