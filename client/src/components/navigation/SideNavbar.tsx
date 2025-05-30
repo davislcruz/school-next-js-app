@@ -49,20 +49,18 @@ export function SideNavbar() {
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
         <div 
+          className="force-avatar-bg"
           style={{ 
             width: '48px',
             height: '48px',
             borderRadius: '50%',
-            background: '#2563eb !important',
-            backgroundColor: '#2563eb !important',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: 'white !important',
+            color: 'white',
             fontWeight: '600',
             position: 'relative',
-            zIndex: 50,
-            border: '2px solid #2563eb'
+            zIndex: 50
           }}
         >
           {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}

@@ -91,3 +91,9 @@
 .send-button-glow {
   animation: send-button-glow 2s infinite ease-in-out;
 }
+
+/* Force avatar background */
+.force-avatar-bg {
+  background-color: #2563eb !important;
+  background: #2563eb !important;
+}
