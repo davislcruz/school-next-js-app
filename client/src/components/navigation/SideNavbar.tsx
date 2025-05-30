@@ -2,6 +2,7 @@ import { MessageSquare, Home, Bell, User, Settings } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { useChatContext } from "@/context/ChatContext";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
+import AvatarWithInitials from "@/components/ui/avatar-with-initials";
 
 export function SideNavbar() {
   const [location] = useLocation();
@@ -47,9 +48,11 @@ export function SideNavbar() {
       </nav>
       
       <div className="border-t border-gray-200 px-4 py-[17px] flex items-center">
-        <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-semibold">
-          {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
-        </div>
+        <AvatarWithInitials
+          name={user?.name || 'User'}
+          size="md"
+          className="w-12 h-12"
+        />
         <div className="ml-3">
           <div className="text-sm font-medium text-gray-900">
             {user?.name || 'User'}
