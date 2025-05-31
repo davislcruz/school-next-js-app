@@ -38,7 +38,7 @@ export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProp
         )}
       </div>
       <div className="flex-1 flex justify-center">
-        <div className="font-semibold text-lg ml-2 md:ml-6 lg:ml-56">Messenger</div>
+        <div className="font-semibold text-lg ml-2 md:ml-4 lg:ml-56">Messenger</div>
       </div>
       <div className="flex items-center space-x-4">
         <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200">
