@@ -37,7 +37,7 @@ export function MessageInput() {
     <div className="bg-white border-t border-gray-200 p-4 mb-0 sticky bottom-0 z-20">
       <div className="flex items-end">
         <div className="flex-1 mr-2">
-          <div className="relative bg-gray-100 rounded-lg">
+          <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg">
             <textarea
               ref={textareaRef}
               style={{ height: textareaHeight, maxHeight: "150px" }}
