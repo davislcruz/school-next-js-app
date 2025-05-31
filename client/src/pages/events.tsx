@@ -7,58 +7,97 @@ import { AppHeader } from "@/components/layout/AppHeader";
 import { Card, CardContent } from "@/components/ui/card";
 
 // Event data
-const upcomingEvents = [
+const academicEvents = [
   {
     id: 1,
+    title: "Science Fair 2025",
+    date: "February 15, 2025",
+    time: "9:00 AM - 3:00 PM",
+    location: "School Auditorium",
+    attendees: 85,
+    description: "Annual science fair showcasing student projects and innovative experiments.",
+    category: "Academic"
+  },
+  {
+    id: 2,
+    title: "Math Olympics",
+    date: "February 22, 2025",
+    time: "10:00 AM - 2:00 PM",
+    location: "Mathematics Building",
+    attendees: 45,
+    description: "Competitive mathematics competition for students of all grade levels.",
+    category: "Academic"
+  },
+  {
+    id: 3,
+    title: "Reading Championship",
+    date: "March 5, 2025",
+    time: "1:00 PM - 4:00 PM",
+    location: "Library",
+    attendees: 32,
+    description: "Reading comprehension and presentation competition with exciting prizes.",
+    category: "Academic"
+  },
+  {
+    id: 4,
+    title: "History Project Exhibition",
+    date: "March 12, 2025",
+    time: "11:00 AM - 3:00 PM",
+    location: "History Hall",
+    attendees: 28,
+    description: "Students present their historical research projects and timelines.",
+    category: "Academic"
+  }
+];
+
+const activityEvents = [
+  {
+    id: 5,
     title: "Winter Festival",
     date: "December 15, 2024",
     time: "2:00 PM - 6:00 PM",
     location: "Community Center",
     attendees: 45,
     description: "Join us for a magical winter celebration with activities for the whole family.",
-    category: "Community"
+    category: "Activity"
   },
   {
-    id: 2,
+    id: 6,
     title: "Holiday Craft Workshop",
     date: "December 18, 2024",
     time: "10:00 AM - 12:00 PM",
     location: "Art Studio",
     attendees: 12,
     description: "Create beautiful holiday decorations and gifts in this hands-on workshop.",
-    category: "Workshop"
+    category: "Activity"
   },
   {
-    id: 3,
+    id: 7,
     title: "New Year's Family Party",
     date: "December 31, 2024",
     time: "7:00 PM - 11:00 PM",
     location: "Main Hall",
     attendees: 78,
     description: "Ring in the new year with games, music, and celebration for all ages.",
-    category: "Celebration"
+    category: "Activity"
   },
   {
-    id: 4,
+    id: 8,
     title: "Winter Sports Day",
     date: "January 5, 2025",
     time: "9:00 AM - 4:00 PM",
     location: "Sports Complex",
     attendees: 32,
     description: "Indoor sports activities and competitions for children and families.",
-    category: "Sports"
+    category: "Activity"
   }
 ];
 
-const eventCategories = ["All", "Community", "Workshop", "Celebration", "Sports"];
-
 export default function Events() {
   const { isMobile, isTablet, isDesktop } = useMobile();
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedTab, setSelectedTab] = useState<'academic' | 'activities'>('academic');
 
-  const filteredEvents = selectedCategory === "All" 
-    ? upcomingEvents 
-    : upcomingEvents.filter(event => event.category === selectedCategory);
+  const currentEvents = selectedTab === 'academic' ? academicEvents : activityEvents;
 
   const handleEventClick = (eventId: number) => {
     console.log('Event clicked:', eventId);
@@ -75,43 +114,52 @@ export default function Events() {
 
         {/* Main Content Area */}
         <div className="flex flex-col flex-1">
+          {/* Tab Navigation */}
+          <div className="bg-white border-b border-gray-100 px-4 md:px-8 lg:px-8">
+            <div className="grid grid-cols-2 max-w-7xl mx-auto">
+              <button
+                onClick={() => setSelectedTab('academic')}
+                className={`py-4 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+                  selectedTab === 'academic'
+                    ? 'text-purple-600 border-b-2 border-purple-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                }`}
+              >
+                Academic
+              </button>
+              <button
+                onClick={() => setSelectedTab('activities')}
+                className={`py-4 font-semibold transition-colors text-sm md:text-base lg:text-base ${
+                  selectedTab === 'activities'
+                    ? 'text-purple-600 border-b-2 border-purple-600'
+                    : 'text-gray-500 hover:text-gray-700'
+                  }`}
+              >
+                Activities
+              </button>
+            </div>
+          </div>
+
           {/* Main Content */}
           <div className="flex-1 bg-gradient-to-br from-blue-50 to-purple-50 overflow-y-auto">
             <div className="max-w-4xl mx-auto px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
               <div className="space-y-6">
                 {/* Header Section */}
-                <header className="text-center mb-8 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                  {/* Page Header */}
-                  <div className="mb-6">
-                    <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold text-gray-800 mb-2">
-                      Upcoming Events
-                    </h1>
-                    <p className="text-gray-600 text-sm md:text-base lg:text-base">
-                      Discover and join exciting events in your community
-                    </p>
-                  </div>
-
-                  {/* Category Filter */}
-                  <nav className="flex flex-wrap gap-2 justify-center">
-                    {eventCategories.map((category) => (
-                      <button
-                        key={category}
-                        onClick={() => setSelectedCategory(category)}
-                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                          selectedCategory === category
-                            ? 'bg-purple-600 text-white'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                      >
-                        {category}
-                      </button>
-                    ))}
-                  </nav>
+                <header className="text-center mb-8">
+                  <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold text-gray-800 mb-2">
+                    {selectedTab === 'academic' ? 'Academic Events' : 'Activity Events'}
+                  </h1>
+                  <p className="text-gray-600 text-sm md:text-base lg:text-base">
+                    {selectedTab === 'academic' 
+                      ? 'Educational competitions and academic celebrations'
+                      : 'Fun activities and community celebrations'
+                    }
+                  </p>
                 </header>
 
                 {/* Events Grid */}
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
-                  {filteredEvents.map((event) => (
+                  {currentEvents.map((event) => (
                     <Card 
                       key={event.id} 
                       className="rounded-2xl shadow-md border border-gray-100 hover:shadow-lg transition-shadow cursor-pointer"
@@ -123,10 +171,8 @@ export default function Events() {
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2">
                               <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                                event.category === 'Community' ? 'bg-blue-100 text-blue-700' :
-                                event.category === 'Workshop' ? 'bg-green-100 text-green-700' :
-                                event.category === 'Celebration' ? 'bg-purple-100 text-purple-700' :
-                                'bg-orange-100 text-orange-700'
+                                event.category === 'Academic' ? 'bg-blue-100 text-blue-700' :
+                                'bg-purple-100 text-purple-700'
                               }`}>
                                 {event.category}
                               </span>
@@ -166,12 +212,12 @@ export default function Events() {
                 </div>
 
                 {/* Empty State */}
-                {filteredEvents.length === 0 && (
+                {currentEvents.length === 0 && (
                   <div className="text-center py-12">
                     <Calendar className="h-12 w-12 text-gray-300 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-gray-900 mb-2">No events found</h3>
                     <p className="text-gray-500">
-                      No events match the selected category. Try selecting a different filter.
+                      No events available for this category at the moment.
                     </p>
                   </div>
                 )}
