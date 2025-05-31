@@ -28,7 +28,7 @@ export function SideNavbar() {
               href={item.href}
               className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                 isActive
-                  ? "bg-primary text-white"
+                  ? "bg-purple-600 text-white"
                   : "text-gray-700 hover:bg-gray-100"
               }`}
             >
