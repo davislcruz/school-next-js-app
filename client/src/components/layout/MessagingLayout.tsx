@@ -27,6 +27,8 @@ export function MessagingLayout() {
       <AppHeader 
         showBackButton={isMobile && showChatOnMobile}
         onBackClick={() => setShowChatOnMobile(false)}
+        title="Messenger"
+        titleClassName="font-semibold text-lg"
       />
 
       {/* Content Area with Sidebar */}

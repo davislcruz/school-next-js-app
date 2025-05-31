@@ -5,9 +5,11 @@ import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 interface AppHeaderProps {
   showBackButton?: boolean;
   onBackClick?: () => void;
+  title?: string;
+  titleClassName?: string;
 }
 
-export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProps) {
+export function AppHeader({ showBackButton = false, onBackClick, title, titleClassName }: AppHeaderProps) {
   const { user } = useChatContext();
 
   return (
@@ -38,7 +40,9 @@ export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProp
         )}
       </div>
       <div className="flex-1 flex justify-center">
-        <div className="font-semibold text-lg ml-0 md:ml-0 lg:ml-60">Messenger</div>
+        <div className={titleClassName || "font-semibold text-lg ml-0 md:ml-0 lg:ml-60"}>
+          {title || "Messenger"}
+        </div>
       </div>
       <div className="flex items-center space-x-4">
         <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200">

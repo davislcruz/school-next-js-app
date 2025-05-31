@@ -252,7 +252,7 @@ export default function Events() {
                   <p className="text-gray-600 text-sm md:text-base lg:text-base">
                     {selectedTab === 'academic' 
                       ? 'School operations, academic progress, and classroom activities'
-                      : 'Clubs, field trips, fundraisers, and family-friendly school events'
+                      : 'Openings for enrichment, clubs, field trips, fundraisers, and family-friendly school events'
                     }
                   </p>
                 </header>
