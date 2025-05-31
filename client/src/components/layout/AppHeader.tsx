@@ -26,10 +26,10 @@ export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProp
               {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
             </div>
             <ChevronDown className="h-4 w-4 text-gray-600 mr-2" />
-            <div className="font-semibold text-lg">Messenger</div>
           </>
         )}
       </div>
+      <div className="font-semibold text-lg">Messenger</div>
       <div className="flex items-center space-x-4">
         <div className="relative">
           <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
