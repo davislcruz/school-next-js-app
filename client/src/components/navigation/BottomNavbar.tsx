@@ -26,7 +26,7 @@ export function BottomNavbar() {
                 className={`flex flex-col items-center p-2 rounded-md transition-colors ${
                   isActive 
                     ? "text-primary" 
-                    : "text-gray-500 hover:text-primary"
+                    : "text-gray-500 hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50"
                 }`}
               >
                 <div className="relative">

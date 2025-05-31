@@ -29,7 +29,7 @@ export function SideNavbar() {
               className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-colors ${
                 isActive
                   ? "bg-purple-600 text-white"
-                  : "text-gray-700 hover:bg-gray-100"
+                  : "text-gray-700 hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50"
               }`}
             >
               <div className="relative">
