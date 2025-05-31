@@ -76,7 +76,7 @@ export default function Events() {
         {/* Main Content Area */}
         <div className="flex flex-col flex-1">
           {/* Main Content */}
-          <div className="flex-1 bg-white overflow-y-auto">
+          <div className="flex-1 bg-gradient-to-br from-blue-50 to-purple-50 overflow-y-auto">
             <div className="max-w-4xl mx-auto px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
               <div className="space-y-6">
                 {/* Page Header */}
