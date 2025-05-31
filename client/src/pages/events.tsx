@@ -205,7 +205,7 @@ export default function Events() {
 
   return (
     <div className="h-[100dvh] flex flex-col">
-      <AppHeader />
+      <AppHeader title="Events" titleClassName="font-semibold text-lg" />
 
       {/* Content Area with Sidebar */}
       <div className="flex flex-1 overflow-hidden">

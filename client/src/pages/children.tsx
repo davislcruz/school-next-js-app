@@ -110,7 +110,7 @@ export default function Children() {
 
   return (
     <div className="h-[100dvh] flex flex-col">
-      <AppHeader />
+      <AppHeader title="Children" titleClassName="font-semibold text-lg" />
 
       {/* Content Area with Sidebar */}
       <div className="flex flex-1 overflow-hidden">
