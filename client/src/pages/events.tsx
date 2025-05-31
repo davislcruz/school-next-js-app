@@ -80,7 +80,7 @@ export default function Events() {
             <div className="max-w-4xl mx-auto px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
               <div className="space-y-6">
                 {/* Header Section */}
-                <header className="text-center mb-8">
+                <header className="text-center mb-8 bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
                   {/* Page Header */}
                   <div className="mb-6">
                     <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold text-gray-800 mb-2">
