@@ -25,6 +25,7 @@ export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProp
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center text-white font-semibold mr-2">
               {user?.name?.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'U'}
             </div>
+            <ChevronDown className="h-4 w-4 text-gray-600 mr-2" />
             <div className="relative mr-2">
               <button className="p-1 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary-500">
                 <Bell className="h-5 w-5" />
@@ -33,7 +34,6 @@ export function AppHeader({ showBackButton = false, onBackClick }: AppHeaderProp
                 <div className="absolute top-0 right-0 bg-red-500 rounded-full h-2.5 w-2.5 ring-2 ring-white"></div>
               )}
             </div>
-            <ChevronDown className="h-4 w-4 text-gray-600 mr-2" />
           </>
         )}
       </div>
