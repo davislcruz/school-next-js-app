@@ -231,7 +231,7 @@ export default function Events() {
                   </h1>
                   <p className="text-gray-600 text-sm md:text-base lg:text-base">
                     {selectedTab === 'academic' 
-                      ? 'Educational competitions and academic celebrations'
+                      ? 'School operations, academic progress, and classroom activities'
                       : 'Fun activities and community celebrations'
                     }
                   </p>
