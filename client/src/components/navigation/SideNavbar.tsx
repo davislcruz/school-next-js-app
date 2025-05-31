@@ -9,7 +9,7 @@ export function SideNavbar() {
   const { user } = useChatContext();
 
   const navItems = [
-    { href: "/", icon: Newspaper, label: "Story" },
+    { href: "/", icon: Newspaper, label: "Newsfeed" },
     { href: "/profile", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages", hasNotification: true },
     { href: "/alerts", icon: Baby, label: "Children" },
