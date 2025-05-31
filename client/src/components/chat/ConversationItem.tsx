@@ -8,12 +8,12 @@ interface ConversationItemProps {
 }
 
 export function ConversationItem({ conversation, isActive, onClick }: ConversationItemProps) {
-  const bgColor = isActive ? "bg-gray-100" : "";
+  const bgColor = isActive ? "bg-gradient-to-br from-blue-50 to-purple-50" : "";
 
   return (
     <div
       onClick={onClick}
-      className={`p-4 flex items-center hover:bg-gray-100 cursor-pointer border-b border-gray-100 transition-colors ${bgColor}`}
+      className={`p-4 flex items-center hover:bg-gradient-to-br hover:from-blue-50 hover:to-purple-50 cursor-pointer border-b border-gray-100 transition-colors ${bgColor}`}
     >
       <AvatarWithInitials
         name={conversation.title}
