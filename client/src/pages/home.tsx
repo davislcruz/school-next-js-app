@@ -85,7 +85,7 @@ export default function Home() {
           {/* Main Content */}
           <div className="flex-1 bg-gradient-to-br from-blue-50 to-purple-50 overflow-y-auto">
             {/* Tab Navigation */}
-            <div className="border-b border-gray-100 px-4 md:px-8 lg:px-8">
+            <div className="bg-white border-b border-gray-100 px-4 md:px-8 lg:px-8">
               <div className="grid grid-cols-2 max-w-7xl mx-auto">
                 <button
                   onClick={() => setSelectedTab('thisYear')}
