@@ -93,82 +93,102 @@ const academicEvents = [
 const activityEvents = [
   {
     id: 9,
-    title: "Fall Harvest Festival",
-    date: "October 25, 2025",
-    time: "11:00 AM - 4:00 PM",
-    location: "School Playground",
-    attendees: 300,
-    description: "Pumpkin patch, hayrides, face painting, and family fun activities.",
+    title: "STEM Club Registration",
+    date: "September 5, 2024",
+    time: "3:00 PM - 4:00 PM",
+    location: "Science Lab",
+    attendees: 25,
+    description: "Sign up for after-school STEM club. Hands-on experiments and robotics projects.",
     category: "Activity"
   },
   {
     id: 10,
-    title: "Winter Holiday Concert",
-    date: "December 18, 2024",
-    time: "7:00 PM - 8:30 PM",
-    location: "School Auditorium",
-    attendees: 250,
-    description: "Students showcase musical talents in our annual winter performance.",
+    title: "Basketball Practice Schedule",
+    date: "October 1-November 15, 2024",
+    time: "3:30 PM - 5:00 PM",
+    location: "Gymnasium",
+    attendees: 20,
+    description: "Tuesdays and Thursdays basketball practice for 4th-6th grade students.",
     category: "Activity"
   },
   {
     id: 11,
-    title: "Spring Carnival",
-    date: "April 12, 2025",
-    time: "12:00 PM - 5:00 PM",
-    location: "School Grounds",
-    attendees: 400,
-    description: "Games, food trucks, raffle prizes, and community fun for all ages.",
+    title: "Museum Field Trip",
+    date: "October 18, 2024",
+    time: "9:00 AM - 3:00 PM",
+    location: "Natural History Museum",
+    attendees: 60,
+    description: "3rd grade field trip to explore dinosaur exhibits. Permission slips required.",
     category: "Activity"
   },
   {
     id: 12,
-    title: "Field Day",
-    date: "May 15, 2025",
-    time: "9:00 AM - 2:00 PM",
-    location: "Athletic Field",
-    attendees: 280,
-    description: "Outdoor games, relay races, and team activities for all grade levels.",
-    category: "Activity"
-  },
-  {
-    id: 13,
-    title: "Art Show & Gallery Walk",
-    date: "March 22, 2025",
-    time: "6:00 PM - 8:00 PM",
-    location: "Art Hallway",
-    attendees: 150,
-    description: "Display of student artwork from throughout the school year.",
-    category: "Activity"
-  },
-  {
-    id: 14,
-    title: "Book Fair",
+    title: "Fall Book Fair",
     date: "November 4-8, 2024",
     time: "8:00 AM - 4:00 PM",
     location: "Library",
     attendees: 320,
-    description: "Browse and purchase books to support reading at home and school library.",
+    description: "Browse and purchase books. Volunteers needed for setup and cashier duties.",
     category: "Activity"
   },
   {
-    id: 15,
-    title: "Science Night",
-    date: "January 25, 2025",
-    time: "6:30 PM - 8:00 PM",
-    location: "Science Labs",
-    attendees: 100,
-    description: "Hands-on science experiments and demonstrations for families.",
+    id: 13,
+    title: "Halloween Dance",
+    date: "October 31, 2024",
+    time: "6:00 PM - 8:00 PM",
+    location: "Multi-Purpose Room",
+    attendees: 150,
+    description: "Costume dance party for K-5 students. Snacks and music provided.",
     category: "Activity"
   },
   {
-    id: 16,
+    id: 14,
     title: "Spirit Week",
     date: "February 24-28, 2025",
     time: "All Day",
     location: "School-wide",
     attendees: 350,
-    description: "Daily themed dress-up days culminating in Friday pep rally.",
+    description: "Daily themed dress-up days: Pajama Day, Crazy Hair Day, Sports Day, Twin Day, School Colors Day.",
+    category: "Activity"
+  },
+  {
+    id: 15,
+    title: "Bake Sale Fundraiser",
+    date: "March 7, 2025",
+    time: "7:30 AM - 2:00 PM",
+    location: "Main Hallway",
+    attendees: 200,
+    description: "Support our playground fund! Volunteers needed to donate baked goods and help with sales.",
+    category: "Activity"
+  },
+  {
+    id: 16,
+    title: "Winter Holiday Concert",
+    date: "December 18, 2024",
+    time: "7:00 PM - 8:30 PM",
+    location: "School Auditorium",
+    attendees: 250,
+    description: "Choir and band students perform seasonal music. Reception to follow.",
+    category: "Activity"
+  },
+  {
+    id: 17,
+    title: "Talent Show",
+    date: "April 25, 2025",
+    time: "6:30 PM - 8:00 PM",
+    location: "School Auditorium",
+    attendees: 300,
+    description: "Student talent showcase. Auditions required. Sign-up sheets available in main office.",
+    category: "Activity"
+  },
+  {
+    id: 18,
+    title: "Library Volunteer Training",
+    date: "September 12, 2024",
+    time: "9:00 AM - 10:30 AM",
+    location: "School Library",
+    attendees: 15,
+    description: "Learn how to help with book shelving, reading to students, and library events.",
     category: "Activity"
   }
 ];
@@ -232,7 +252,7 @@ export default function Events() {
                   <p className="text-gray-600 text-sm md:text-base lg:text-base">
                     {selectedTab === 'academic' 
                       ? 'School operations, academic progress, and classroom activities'
-                      : 'Fun activities and community celebrations'
+                      : 'Enrichment, fun, and community-building events where parents may sign up kids or participate'
                     }
                   </p>
                 </header>
