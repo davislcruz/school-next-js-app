@@ -71,7 +71,7 @@ export default function Home() {
 
   return (
     <div className="h-[100dvh] flex flex-col">
-      <AppHeader title="Newsfeed" titleClassName="font-semibold text-lg" />
+      <AppHeader title="Newsfeed" />
 
 
 

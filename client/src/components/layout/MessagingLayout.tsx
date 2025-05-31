@@ -28,7 +28,6 @@ export function MessagingLayout() {
         showBackButton={isMobile && showChatOnMobile}
         onBackClick={() => setShowChatOnMobile(false)}
         title="Messages"
-        titleClassName="font-semibold text-lg"
       />
 
       {/* Content Area with Sidebar */}
