@@ -35,7 +35,7 @@ export function SideNavbar() {
               <div className="relative">
                 <Icon className="h-5 w-5 mr-3" />
                 {item.hasNotification && (
-                  <div className="absolute -top-1 -right-1 bg-red-500 rounded-full h-2 w-2"></div>
+                  <div className="absolute -top-1 right-1 bg-red-500 rounded-full h-2 w-2"></div>
                 )}
               </div>
               {item.label}
