@@ -79,32 +79,35 @@ export default function Events() {
           <div className="flex-1 bg-gradient-to-br from-blue-50 to-purple-50 overflow-y-auto">
             <div className="max-w-4xl mx-auto px-8 py-6 md:px-12 md:py-8 lg:px-16 lg:py-10">
               <div className="space-y-6">
-                {/* Page Header */}
-                <div className="text-center mb-8">
-                  <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold text-gray-800 mb-2">
-                    Upcoming Events
-                  </h1>
-                  <p className="text-gray-600 text-sm md:text-base lg:text-base">
-                    Discover and join exciting events in your community
-                  </p>
-                </div>
+                {/* Header Section */}
+                <header className="text-center mb-8">
+                  {/* Page Header */}
+                  <div className="mb-6">
+                    <h1 className="text-2xl md:text-3xl lg:text-3xl font-bold text-gray-800 mb-2">
+                      Upcoming Events
+                    </h1>
+                    <p className="text-gray-600 text-sm md:text-base lg:text-base">
+                      Discover and join exciting events in your community
+                    </p>
+                  </div>
 
-                {/* Category Filter */}
-                <div className="flex flex-wrap gap-2 justify-center mb-8">
-                  {eventCategories.map((category) => (
-                    <button
-                      key={category}
-                      onClick={() => setSelectedCategory(category)}
-                      className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                        selectedCategory === category
-                          ? 'bg-purple-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      {category}
-                    </button>
-                  ))}
-                </div>
+                  {/* Category Filter */}
+                  <nav className="flex flex-wrap gap-2 justify-center">
+                    {eventCategories.map((category) => (
+                      <button
+                        key={category}
+                        onClick={() => setSelectedCategory(category)}
+                        className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                          selectedCategory === category
+                            ? 'bg-purple-600 text-white'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
+                      >
+                        {category}
+                      </button>
+                    ))}
+                  </nav>
+                </header>
 
                 {/* Events Grid */}
                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-1">
