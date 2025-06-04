@@ -1,6 +1,48 @@
+# Node
+node_modules/
 node_modules
+
+# Build output
+dist/
 dist
-.DS_Store
+server/public/
 server/public
-vite.config.ts.*
+
+# OS files
+.DS_Store
+
+# Archives
 *.tar.gz
+
+# Replit config (optional — not needed in GitHub)
+.replit
+
+# Log files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables (DO NOT commit secrets!)
+.env/
+.env
+.env.*
+
+# Vite cache (if used)
+.vite/
+vite.config.ts.*
+
+# VSCode settings (optional)
+.vscode/
+
+# TypeScript cache (if using)
+*.tsbuildinfo
+
+# Coverage reports
+coverage/
+
+# Replit checkpoints (sometimes created)
+*.replit-checkpoint
+
+# macOS folder attributes
+.AppleDouble
