@@ -2,6 +2,9 @@
 node_modules/
 node_modules
 
+# Temporary assets
+attached_assets/
+
 # Build output
 dist/
 dist
