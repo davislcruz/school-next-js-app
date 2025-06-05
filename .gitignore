@@ -36,7 +36,8 @@ yarn-error.log*
 
 # Vite cache (if used)
 .vite/
-vite.config.ts.*
+vite.config.ts.local
+vite.config.ts.bak
 
 # VSCode settings (optional)
 .vscode/
@@ -52,3 +53,6 @@ coverage/
 
 # macOS folder attributes
 .AppleDouble
+
+# Thumbs.db (Windows)
+Thumbs.db
