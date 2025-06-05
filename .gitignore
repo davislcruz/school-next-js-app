@@ -5,6 +5,9 @@ node_modules
 # Temporary assets
 attached_assets/
 
+# Temporary icon
+generated-icon.png
+
 # Build output
 dist/
 dist
@@ -27,7 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment variables (DO NOT commit secrets!)
-.env/
+.env/cl
 .env
 .env.*
 
