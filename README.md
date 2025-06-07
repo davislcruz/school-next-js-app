@@ -1,6 +1,6 @@
 # EduConnect - Educational Communication Platform
 
-![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 ![Node.js](https://img.shields.io/badge/node-22%2B-brightgreen)
 ![PostgreSQL](https://img.shields.io/badge/database-PostgreSQL-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-4.x-blue)
@@ -8,6 +8,8 @@
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
 
 A comprehensive **mobile-first** educational communication platform designed to connect students, parents, and educators through intuitive and engaging digital experiences in a child-safe environment.
+
+---
 
 ## 🎯 Purpose & Goals
 
@@ -25,25 +27,54 @@ The application aims to strengthen the educational community by facilitating sea
 
 ---
 
-## 🚀 Key Features (Overview)
+## 🚀 Key Features
 
-- Responsive Design
-- Newsfeed for community updates
-- Event management (academic + extracurricular)
-- Real-time messaging
-- Children dashboard
-- Accessibility-first design
+### 📱 Responsive Design
 
-➡️ See full feature details in [FEATURES.md](./FEATURES.md)
+- Mobile-first architecture
+- Adaptive layouts (mobile, tablet, desktop)
+- Progressive Web App (offline capabilities, app-like UX)
+
+### 🏠 Newsfeed (Home)
+
+- Social stories
+- Event highlights
+- Interactive timeline ("This Year", "Memories")
+- Like, comment, share
+
+### 📅 Events Management
+
+- Academic events (conferences, grades, testing)
+- Activity events (clubs, sports, trips, fundraisers)
+- Categorization: academic / extracurricular
+- Event details: dates, times, locations
+- RSVP system
+
+### 💬 Real-Time Messaging
+
+- Secure direct messaging
+- Group chats (class/activity based)
+- Message threading and search
+- Read receipts
+- File sharing (role-based permissions)
+- WebSocket integration planned (`Socket.IO` / `ws` TBD)
+
+### 👶 Children Dashboard
+
+- Student profiles
+- Academic progress (grades, assignments, milestones)
+- Gamified achievements
+- Activity tracking
+- Parent insights & analytics
 
 ---
 
-## 🛠 Technical Architecture (Overview)
+## 🛠 Technical Architecture
 
 Frontend: React + TypeScript + Vite + Tailwind CSS  
 Backend: Express + PostgreSQL + Drizzle ORM + WebSocket
 
-➡️ Full architecture: [ARCHITECTURE.md](ARCHITECTURE.md)
+➡️ Full architecture: [Architecture](./ARCHITECTURE.md)
 
 ---
 
@@ -51,7 +82,7 @@ Backend: Express + PostgreSQL + Drizzle ORM + WebSocket
 
 Current phase: Core functionality in development.
 
-➡️ Full roadmap: [ROADMAP.md](ROADMAP.md)
+➡️ Full roadmap: [Roadmap](./ROADMAP.md)
 
 ---
 
@@ -59,7 +90,7 @@ Current phase: Core functionality in development.
 
 We welcome contributions!
 
-➡️ See guidelines: [CONTRIBUTING.md](CONTRIBUTING.md)
+➡️ See guidelines: [Contributing](./CONTRIBUTING.md)
 
 ---
 
@@ -82,4 +113,3 @@ cp .env.example .env
 
 npm run db:push
 npm run dev
-gi
