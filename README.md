@@ -78,14 +78,6 @@ Backend: Express + PostgreSQL + Drizzle ORM + WebSocket
 
 ---
 
-## 🗺 Roadmap
-
-Current phase: Core functionality in development.
-
-➡️ Full roadmap: [Roadmap](./ROADMAP.md)
-
----
-
 ## 🤝 Contributing
 
 We welcome contributions!
