@@ -1,38 +1,17 @@
-# EduConnect Technical Architecture
+# Tech Stack
 
-## Frontend Stack
+## Frontend
+- **React** (with TypeScript)
+- **Vite** (build tool and dev server)
+- **Tailwind CSS** (utility-first CSS framework)
 
-- React 18 + TypeScript
-- Vite (fast builds)
-- Tailwind CSS (utility-first)
-- Wouter (lightweight routing)
-- TanStack Query (state & data)
-- Framer Motion (animations)
+## Backend
+- **Express** (Node.js web framework)
+- **TypeScript** (for type safety)
+- **Drizzle Kit** (database toolkit)
 
-## UI Component Library
-
-- Radix UI primitives
-- shadcn/ui components
-- Lucide React icons
-- React Hook Form + Zod validation
-
-## Backend Infrastructure
-
-- Express.js + TypeScript
-- Drizzle ORM
-- PostgreSQL (Neon serverless)
-- WebSocket (planned: Socket.IO / native ws)
-- Session management (express-session + secure auth)
-
-## Testing Stack (planned)
-
-- Vitest + React Testing Library
-- Playwright / Cypress (optional)
-
-## Development Tools
-
-- TypeScript
-- ESBuild
-- Drizzle Kit
-- Hot Module Replacement
-- ESLint + Prettier
+## Tooling & Development
+- **Vite** (for frontend build and hot reload)
+- **TypeScript** (across frontend and backend)
+- **PostCSS** and **Autoprefixer** (CSS processing)
+- **Jest** or similar (for testing, if configured)
