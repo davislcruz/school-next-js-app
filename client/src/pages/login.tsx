@@ -6,7 +6,7 @@ import { Card } from "../components/ui/card";
 
 const Login: React.FC = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
       <Card className="w-full max-w-md p-8 shadow-lg mx-2 sm:mx-0">
         <h2 className="text-3xl font-bold mb-2 text-center">Sign In</h2>
         <p className="text-gray-500 mb-6 text-center">
