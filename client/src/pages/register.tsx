@@ -48,7 +48,7 @@ const Register: React.FC = () => {
               <Input id="confirmPassword" type="password" placeholder="Confirm password" required />
             </div>
           </div>
-          <Button className="w-full mt-2" type="submit">Create Account</Button>
+          <Button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-all duration-200 w-full mt-2" type="submit">Create Account</Button>
         </form>
         <div className="text-center mt-4">
           <span className="text-gray-500 text-sm">Already have an account? </span>
