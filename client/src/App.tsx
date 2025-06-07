@@ -8,6 +8,7 @@ import Home from "@/pages/home";
 import Messages from "@/pages/messages";
 import Events from "@/pages/events";
 import Children from "@/pages/children";
+import Register from "@/pages/register";
 import { ChatProvider } from "./context/ChatContext";
 
 function Router() {
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/messages" component={Messages} />
       <Route path="/profile" component={Events} />
       <Route path="/alerts" component={Children} />
+      <Route path="/register" component={Register} />
       <Route component={NotFound} />
     </Switch>
   );
