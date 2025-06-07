@@ -34,7 +34,7 @@ The application aims to strengthen the educational community by facilitating sea
 - Children dashboard
 - Accessibility-first design
 
-➡️ See full feature details in [FEATURES.md](FEATURES.md)
+➡️ See full feature details in [FEATURES.md](./FEATURES.md)
 
 ---
 
@@ -82,3 +82,4 @@ cp .env.example .env
 
 npm run db:push
 npm run dev
+gi
