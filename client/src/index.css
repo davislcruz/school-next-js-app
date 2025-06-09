@@ -66,7 +66,7 @@
 }
 
 .receiver-bubble {
-  @apply bg-purple-500 text-white rounded-bl-none;
+  @apply bg-purple-400 text-white rounded-bl-none;
 }
 
 /* Hide scrollbar for cleaner UI */

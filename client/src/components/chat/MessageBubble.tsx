@@ -40,7 +40,7 @@ export function MessageBubble({ message, sender }: MessageBubbleProps) {
           </span>
           <span className="text-xs text-gray-500">{time}</span>
         </div>
-        <div className="message-bubble receiver-bubble bg-purple-500">
+        <div className="message-bubble receiver-bubble bg-purple-100">
           {message.content}
         </div>
       </div>
