@@ -20,9 +20,7 @@ export function MessageBubble({ message, sender }: MessageBubbleProps) {
           <div className="flex items-center justify-end mb-1">
             <span className="text-xs text-gray-500">{time}</span>
           </div>
-          <div className="message-bubble sender-bubble">
-            {message.content}
-          </div>
+          <div className="message-bubble sender-bubble">{message.content}</div>
         </div>
       </div>
     );
@@ -42,7 +40,7 @@ export function MessageBubble({ message, sender }: MessageBubbleProps) {
           </span>
           <span className="text-xs text-gray-500">{time}</span>
         </div>
-        <div className="message-bubble receiver-bubble">
+        <div className="message-bubble receiver-bubble bg-purple-500">
           {message.content}
         </div>
       </div>
