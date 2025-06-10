@@ -40,7 +40,7 @@ export function MessageInput() {
           <div className="relative bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg">
             <textarea
               ref={textareaRef}
-              style={{ height: textareaHeight, maxHeight: "150px" }}
+              style={{ height: "48px" }} // Fixed height set here
               className="w-full bg-transparent border-0 py-3 px-4 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg resize-none scrollbar-hide"
               placeholder="Type a message..."
               rows={1}

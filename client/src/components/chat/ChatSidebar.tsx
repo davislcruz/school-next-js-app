@@ -76,10 +76,10 @@ export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile', onConversa
         )}
       </div>
 
-      <div className="px-4 py-[17px] border-t border-gray-200 flex items-center">
-        <Button className="w-full h-12 text-sm">
+      <div className="px-4 py-4 border-t border-gray-200 flex items-center">
+        <Button className="w-full py-6 rounded-lg">
           <PlusIcon className="h-5 w-5 mr-2" />
-          New Conversation
+          <span>New Conversation</span>
         </Button>
       </div>
     </div>
