@@ -1,53 +1,39 @@
-# Node
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Build output
-dist/
-server/public/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Vite cache
-.vite/
+# testing
+/coverage
 
-# Environment variables (DO NOT commit secrets!)
-.env
-.env.*
+# next.js
+/.next/
+/out/
 
-# Logs
-*.log
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
 yarn-debug.log*
-pnpm-debug.log*
+yarn-error.log*
 
-# OS files
-.DS_Store
-Thumbs.db
-.AppleDouble
+# local env files
+.env*.local
 
-# Archives
-*.tar.gz
-*.zip
+# vercel
+.vercel
 
-# Editor settings
-.vscode/
-
-# TypeScript cache
+# typescript
 *.tsbuildinfo
+next-env.d.ts
 
-# Coverage reports
-coverage/
-
-# Replit files (optional — not needed in GitHub)
-.replit
-*.replit-checkpoint
-
-# Temporary assets
-attached_assets/
-generated-icon.png
-
-# Local Vite config backups (optional)
-vite.config.ts.local
-vite.config.ts.bak
-
-# Misc
-*.swp
-*.swo
+# old express build
+/dist
+/client/dist
