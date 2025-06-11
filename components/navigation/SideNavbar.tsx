@@ -1,25 +1,28 @@
+"use client";
+
 import { MessageSquare, Newspaper, Baby, Calendar } from "lucide-react";
-import { Link, useLocation } from "wouter";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useChatContext } from "@/context/ChatContext";
 import { TOTAL_UNREAD_COUNT } from "@/lib/constants";
 import AvatarWithInitials from "@/components/ui/avatar-with-initials";
 
 export function SideNavbar() {
-  const [location] = useLocation();
+  const pathname = usePathname();
   const { user } = useChatContext();
 
   const navItems = [
     { href: "/", icon: Newspaper, label: "Newsfeed" },
-    { href: "/profile", icon: Calendar, label: "Events" },
+    { href: "/events", icon: Calendar, label: "Events" },
     { href: "/messages", icon: MessageSquare, label: "Messages", hasNotification: true },
-    { href: "/alerts", icon: Baby, label: "Children" },
+    { href: "/children", icon: Baby, label: "Children" },
   ];
 
   return (
     <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-white border-r border-gray-200 h-full">
       <nav className="flex-1 px-4 py-6 space-y-2">
         {navItems.map((item) => {
-          const isActive = location === item.href;
+          const isActive = pathname === item.href;
           const Icon = item.icon;
           
           return (

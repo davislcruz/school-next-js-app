@@ -1,6 +1,7 @@
+"use client";
+
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { useLocation } from "wouter";
 import { useChatContext } from "@/context/ChatContext";
 import ConversationItem from "./ConversationItem";
 import { Button } from "@/components/ui/button";
@@ -17,7 +18,6 @@ interface ChatSidebarProps {
 export function ChatSidebar({ isOpen, onClose, layoutMode = 'mobile', onConversationSelect }: ChatSidebarProps) {
   const { conversations, activeConversationId, setActiveConversationId } = useChatContext();
   const [searchQuery, setSearchQuery] = useState("");
-  const [, setLocation] = useLocation();
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
