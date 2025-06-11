@@ -1,13 +1,11 @@
-'use client'
-
 import { useState } from "react";
 import { ChevronRight, Heart, MessageCircle } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
+import { useChatContext } from "@/context/ChatContext";
 import { BottomNavbar } from "@/components/navigation/BottomNavbar";
 import { SideNavbar } from "@/components/navigation/SideNavbar";
 import { AppHeader } from "@/components/layout/AppHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 
 // Mock data for the home page
 const mockEvent = {
@@ -45,12 +43,15 @@ const stories = [
   }
 ];
 
-export default function HomePage() {
+export default function Home() {
   const { isMobile, isTablet, isDesktop } = useMobile();
+  const { user } = useChatContext();
   const [selectedTab, setSelectedTab] = useState<'thisYear' | 'memories'>('thisYear');
+  const [activeNavTab, setActiveNavTab] = useState<string>('story');
   const [storiesState, setStoriesState] = useState(stories);
 
   const handleViewAllEvents = () => {
+    // Navigate to events page
     console.log("View all events clicked");
   };
 
@@ -71,6 +72,8 @@ export default function HomePage() {
   return (
     <div className="h-[100dvh] flex flex-col">
       <AppHeader title="Newsfeed" />
+
+
 
       {/* Content Area with Sidebar */}
       <div className="flex flex-1 overflow-hidden">
@@ -218,5 +221,5 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }
