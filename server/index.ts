@@ -4,11 +4,24 @@ import next from 'next';
 
 const dev = process.env.NODE_ENV !== 'production';
 const hostname = '0.0.0.0';
-const port = parseInt(process.env.PORT || '3000', 10);
+const port = parseInt(process.env.PORT || '5000', 10);
 
 // Initialize Next.js
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  // Don't exit the process for WebSocket errors
+  if (!error.message.includes('WS_ERR_INVALID_CLOSE_CODE')) {
+    process.exit(1);
+  }
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+});
 
 async function startServer() {
   try {
@@ -33,10 +46,21 @@ async function startServer() {
     });
     
     // Set up WebSocket server for real-time messaging
-    const wss = new WebSocketServer({ server });
+    const wss = new WebSocketServer({ 
+      server,
+      perMessageDeflate: false,
+      maxPayload: 64 * 1024 // 64KB
+    });
     
-    wss.on('connection', (ws) => {
+    wss.on('connection', (ws, req) => {
       console.log('Client connected');
+      
+      // Set up ping/pong to keep connection alive
+      const pingInterval = setInterval(() => {
+        if (ws.readyState === ws.OPEN) {
+          ws.ping();
+        }
+      }, 30000);
       
       ws.on('message', (message) => {
         try {
@@ -53,12 +77,25 @@ async function startServer() {
       });
       
       ws.on('close', (code, reason) => {
-        console.log(`Client disconnected: ${code} ${reason}`);
+        clearInterval(pingInterval);
+        // Only log clean disconnections to avoid spam
+        if (code === 1000 || code === 1001) {
+          console.log(`Client disconnected cleanly: ${code}`);
+        }
       });
       
       ws.on('error', (error) => {
         console.error('WebSocket error:', error);
+        clearInterval(pingInterval);
       });
+      
+      ws.on('pong', () => {
+        // Connection is alive
+      });
+    });
+    
+    wss.on('error', (error) => {
+      console.error('WebSocket Server error:', error);
     });
     
     server.listen(port, hostname, () => {
