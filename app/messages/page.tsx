@@ -1,11 +1,8 @@
-import { Metadata } from 'next'
-import Messages from '@/pages/messages'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Messages | EduConnect',
-  description: 'Connect with teachers, parents, and students through secure messaging.',
-}
+import { Metadata } from 'next'
+import { MessagingLayout } from '@/components/layout/MessagingLayout'
 
 export default function MessagesPage() {
-  return <Messages />
+  return <MessagingLayout />
 }
