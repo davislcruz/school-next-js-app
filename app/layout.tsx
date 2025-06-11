@@ -1,17 +1,14 @@
-import type { Metadata } from 'next'
+'use client'
+
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ChatProvider } from '@/context/ChatContext'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from 'next-themes'
 import { Toaster } from '@/components/ui/toaster'
+import React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'EduConnect - Educational Communication Platform',
-  description: 'A mobile-first educational communication platform connecting students, parents, and educators.',
-}
 
 const queryClient = new QueryClient({
   defaultOptions: {
