@@ -1,6 +1,5 @@
 'use client'
 
-import { Metadata } from 'next'
 import { AppHeader } from '@/components/layout/AppHeader'
 import { BottomNavbar } from '@/components/navigation/BottomNavbar'
 import { SideNavbar } from '@/components/navigation/SideNavbar'
@@ -8,7 +7,7 @@ import { useMobile } from '@/hooks/use-mobile'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Heart, MessageCircle, Share2, Calendar, Star, Trophy, Users } from 'lucide-react'
+import { Heart, MessageCircle, Share2, Calendar, ChevronRight } from 'lucide-react'
 
 export default function HomePage() {
   const { isMobile, isTablet } = useMobile()
@@ -30,154 +29,115 @@ export default function HomePage() {
             <AppHeader title="Newsfeed" />
 
             {/* Content */}
-            <div className="p-4 pb-20 md:pb-4">
-              {/* Welcome Section */}
-              <div className="mb-6">
-                <Card className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white">
-                  <CardContent className="p-6">
-                    <h2 className="text-2xl font-bold mb-2">Welcome to EduConnect!</h2>
-                    <p className="text-purple-100">Stay connected with your school community</p>
-                  </CardContent>
-                </Card>
-              </div>
+            <div className="p-6 pb-20 md:pb-4 max-w-2xl mx-auto">
+              {/* This year section */}
+              <div className="mb-8">
+                <div className="text-center mb-6">
+                  <div className="inline-block px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm">
+                    <span className="text-gray-600 text-sm">This year</span>
+                  </div>
+                </div>
 
-              {/* Quick Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                <Card>
-                  <CardContent className="p-4 text-center">
-                    <Users className="h-8 w-8 text-purple-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold">1,247</div>
-                    <div className="text-sm text-gray-600">Students</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-4 text-center">
-                    <Calendar className="h-8 w-8 text-blue-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold">15</div>
-                    <div className="text-sm text-gray-600">Events This Month</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-4 text-center">
-                    <Trophy className="h-8 w-8 text-yellow-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold">42</div>
-                    <div className="text-sm text-gray-600">Achievements</div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardContent className="p-4 text-center">
-                    <Star className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <div className="text-2xl font-bold">4.8</div>
-                    <div className="text-sm text-gray-600">School Rating</div>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Recent Posts */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold mb-4">Recent Updates</h3>
-                
-                <Card>
+                {/* Next Event Card */}
+                <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-100 mb-8">
                   <CardHeader>
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                          <span className="text-purple-600 font-semibold">SB</span>
-                        </div>
-                        <div>
-                          <CardTitle className="text-sm">Springfield Elementary</CardTitle>
-                          <p className="text-xs text-gray-500">2 hours ago</p>
-                        </div>
-                      </div>
-                      <Badge variant="secondary">School News</Badge>
+                      <CardTitle className="text-lg font-semibold text-gray-800">Next Event</CardTitle>
+                      <Button variant="ghost" size="sm" className="text-purple-600 hover:text-purple-700">
+                        View all <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">🎉 Great news! Our school science fair winners have been announced. Congratulations to all participants for their amazing projects!</p>
-                    <div className="flex items-center space-x-4 text-gray-500">
-                      <Button variant="ghost" size="sm">
-                        <Heart className="h-4 w-4 mr-1" />
-                        24
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <MessageCircle className="h-4 w-4 mr-1" />
-                        8
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Share2 className="h-4 w-4 mr-1" />
-                        Share
-                      </Button>
+                  <CardContent className="pt-0">
+                    <div className="bg-white rounded-lg p-4 shadow-sm">
+                      <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">
+                        DECEMBER 15, 2024
+                      </div>
+                      <h3 className="font-semibold text-gray-900 mb-1">Winter Festival</h3>
+                      <p className="text-sm text-gray-600">2:00 PM - 6:00 PM</p>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
+                {/* Stories Section */}
+                <div className="mb-6">
+                  <h2 className="text-lg font-semibold text-gray-800 mb-4">Stories</h2>
+                  
+                  {/* Story Post */}
+                  <Card className="mb-6">
+                    <CardHeader className="pb-3">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                          <span className="text-green-600 font-semibold">MJ</span>
+                        <div className="w-10 h-10 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-semibold text-sm">SJ</span>
                         </div>
-                        <div>
-                          <CardTitle className="text-sm">Ms. Johnson - 3rd Grade</CardTitle>
-                          <p className="text-xs text-gray-500">4 hours ago</p>
+                        <div className="flex-1">
+                          <h4 className="font-medium text-gray-900">Sarah Johnson</h4>
+                          <p className="text-xs text-gray-500">Central Park • 2h ago</p>
                         </div>
                       </div>
-                      <Badge variant="outline">Classroom</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">📚 Reminder: Reading homework is due tomorrow. Don't forget to log your reading minutes in your reading journal!</p>
-                    <div className="flex items-center space-x-4 text-gray-500">
-                      <Button variant="ghost" size="sm">
-                        <Heart className="h-4 w-4 mr-1" />
-                        12
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <MessageCircle className="h-4 w-4 mr-1" />
-                        3
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Share2 className="h-4 w-4 mr-1" />
-                        Share
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-gray-700 mb-4">
+                        Amazing day at the park with the kids! The weather was perfect for our picnic.
+                      </p>
+                      
+                      {/* Story Image */}
+                      <div className="relative rounded-lg overflow-hidden bg-gradient-to-br from-yellow-200 via-pink-200 to-purple-300 h-48 mb-4">
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="text-6xl select-none">🎪</div>
+                        </div>
+                        <div className="absolute top-4 right-4 w-2 h-2 bg-pink-400 rounded-full"></div>
+                        <div className="absolute top-8 right-8 w-1 h-1 bg-purple-400 rounded-full"></div>
+                        <div className="absolute bottom-6 left-6 w-1.5 h-1.5 bg-yellow-400 rounded-full"></div>
+                        <div className="absolute bottom-12 right-12 w-1 h-1 bg-pink-300 rounded-full"></div>
+                      </div>
 
-                <Card>
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
+                      {/* Post Actions */}
+                      <div className="flex items-center space-x-6 text-gray-500">
+                        <button className="flex items-center space-x-1 text-pink-500 hover:text-pink-600">
+                          <Heart className="h-4 w-4 fill-current" />
+                          <span className="text-sm font-medium">14 likes</span>
+                        </button>
+                        <button className="flex items-center space-x-1 hover:text-gray-700">
+                          <MessageCircle className="h-4 w-4" />
+                          <span className="text-sm">8 comments</span>
+                        </button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Additional Story Post */}
+                  <Card>
+                    <CardHeader className="pb-3">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                          <span className="text-blue-600 font-semibold">PT</span>
+                        <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-teal-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-semibold text-sm">MC</span>
                         </div>
-                        <div>
-                          <CardTitle className="text-sm">Parent-Teacher Association</CardTitle>
-                          <p className="text-xs text-gray-500">1 day ago</p>
+                        <div className="flex-1">
+                          <h4 className="font-medium text-gray-900">Mike Chen</h4>
+                          <p className="text-xs text-gray-500">Springfield Elementary • 4h ago</p>
                         </div>
                       </div>
-                      <Badge variant="default">Event</Badge>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">🎪 Spring Carnival planning meeting this Friday at 7 PM in the library. We need volunteers for games and food booths!</p>
-                    <div className="flex items-center space-x-4 text-gray-500">
-                      <Button variant="ghost" size="sm">
-                        <Heart className="h-4 w-4 mr-1" />
-                        18
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <MessageCircle className="h-4 w-4 mr-1" />
-                        6
-                      </Button>
-                      <Button variant="ghost" size="sm">
-                        <Share2 className="h-4 w-4 mr-1" />
-                        Share
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-gray-700 mb-4">
+                        Great soccer practice today! The kids are really improving their teamwork skills.
+                      </p>
+
+                      {/* Post Actions */}
+                      <div className="flex items-center space-x-6 text-gray-500">
+                        <button className="flex items-center space-x-1 hover:text-pink-600">
+                          <Heart className="h-4 w-4" />
+                          <span className="text-sm">12 likes</span>
+                        </button>
+                        <button className="flex items-center space-x-1 hover:text-gray-700">
+                          <MessageCircle className="h-4 w-4" />
+                          <span className="text-sm">3 comments</span>
+                        </button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
             </div>
           </div>

@@ -10,14 +10,22 @@ import React from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
-      refetchOnWindowFocus: false,
-    },
-  },
-})
+// Create QueryClient instance outside component to prevent recreation
+let queryClient: QueryClient
+
+function getQueryClient() {
+  if (!queryClient) {
+    queryClient = new QueryClient({
+      defaultOptions: {
+        queries: {
+          staleTime: 1000 * 60 * 5, // 5 minutes
+          refetchOnWindowFocus: false,
+        },
+      },
+    })
+  }
+  return queryClient
+}
 
 export default function RootLayout({
   children,
@@ -33,7 +41,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <QueryClientProvider client={queryClient}>
+          <QueryClientProvider client={getQueryClient()}>
             <ChatProvider>
               {children}
               <Toaster />

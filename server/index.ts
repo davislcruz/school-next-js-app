@@ -52,8 +52,12 @@ async function startServer() {
         }
       });
       
-      ws.on('close', () => {
-        console.log('Client disconnected');
+      ws.on('close', (code, reason) => {
+        console.log(`Client disconnected: ${code} ${reason}`);
+      });
+      
+      ws.on('error', (error) => {
+        console.error('WebSocket error:', error);
       });
     });
     

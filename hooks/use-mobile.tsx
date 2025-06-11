@@ -1,19 +1,14 @@
 import { useState, useEffect } from "react";
 
 export function useMobile(mobileBreakpoint = 768, desktopBreakpoint = 1024) {
-  const [isMobile, setIsMobile] = useState(
-    typeof window !== "undefined" ? window.innerWidth < mobileBreakpoint : false
-  );
-  const [isTablet, setIsTablet] = useState(
-    typeof window !== "undefined" ? window.innerWidth >= mobileBreakpoint && window.innerWidth < desktopBreakpoint : false
-  );
-  const [isDesktop, setIsDesktop] = useState(
-    typeof window !== "undefined" ? window.innerWidth >= desktopBreakpoint : false
-  );
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
+    setMounted(true);
+    
     const handleResize = () => {
       const width = window.innerWidth;
       setIsMobile(width < mobileBreakpoint);
@@ -21,11 +16,19 @@ export function useMobile(mobileBreakpoint = 768, desktopBreakpoint = 1024) {
       setIsDesktop(width >= desktopBreakpoint);
     };
 
+    // Set initial values
+    handleResize();
+    
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [mobileBreakpoint, desktopBreakpoint]);
+
+  // Return desktop defaults until mounted
+  if (!mounted) {
+    return { isMobile: false, isTablet: false, isDesktop: true };
+  }
 
   return { isMobile, isTablet, isDesktop };
 }
