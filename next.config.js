@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
   images: {
     domains: ['localhost'],
   },
@@ -10,4 +7,4 @@ const nextConfig = {
   transpilePackages: ['lucide-react'],
 }
 
-module.exports = nextConfig
+export default nextConfig
