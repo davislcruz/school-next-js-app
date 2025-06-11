@@ -11,12 +11,16 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 // Handle uncaught exceptions
-process.on('uncaughtException', (error) => {
+process.on('uncaughtException', (error: any) => {
   console.error('Uncaught Exception:', error);
   // Don't exit the process for WebSocket errors
-  if (!error.message.includes('WS_ERR_INVALID_CLOSE_CODE')) {
-    process.exit(1);
+  if (error.code === 'WS_ERR_INVALID_UTF8' || 
+      error.code === 'WS_ERR_INVALID_CLOSE_CODE' ||
+      error.message?.includes('Invalid WebSocket frame')) {
+    console.log('WebSocket frame error handled, continuing...');
+    return;
   }
+  process.exit(1);
 });
 
 process.on('unhandledRejection', (reason, promise) => {
@@ -64,15 +68,45 @@ async function startServer() {
       
       ws.on('message', (message) => {
         try {
-          const data = JSON.parse(message.toString());
+          // Validate message exists
+          if (!message) {
+            return;
+          }
+          
+          let messageStr;
+          try {
+            messageStr = message.toString('utf8');
+          } catch (utf8Error) {
+            console.log('Invalid UTF-8 message received, ignoring');
+            return;
+          }
+          
+          // Validate message has content
+          if (!messageStr || messageStr.length === 0) {
+            return;
+          }
+          
+          // Validate JSON
+          const data = JSON.parse(messageStr);
+          
+          // Basic validation of message structure
+          if (typeof data !== 'object' || data === null) {
+            return;
+          }
+          
           // Broadcast message to all connected clients
           wss.clients.forEach((client) => {
             if (client !== ws && client.readyState === client.OPEN) {
-              client.send(JSON.stringify(data));
+              try {
+                client.send(JSON.stringify(data));
+              } catch (sendError) {
+                console.log('Error sending to client, removing connection');
+                client.terminate();
+              }
             }
           });
         } catch (error) {
-          console.error('Error parsing message:', error);
+          console.log('Message processing error, ignoring invalid message');
         }
       });
       
