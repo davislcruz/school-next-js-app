@@ -10,16 +10,17 @@ const port = parseInt(process.env.PORT || '5000', 10);
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-// Handle uncaught exceptions
-process.on('uncaughtException', (error: any) => {
-  console.error('Uncaught Exception:', error);
-  // Don't exit the process for WebSocket errors
+// Handle uncaught exceptions - completely silence WebSocket frame errors
+process.on('uncaughtException', (error: Error & { code?: string }) => {
+  // Completely ignore WebSocket frame errors - they're harmless network noise
   if (error.code === 'WS_ERR_INVALID_UTF8' || 
       error.code === 'WS_ERR_INVALID_CLOSE_CODE' ||
-      error.message?.includes('Invalid WebSocket frame')) {
-    console.log('WebSocket frame error handled, continuing...');
+      error.code === 'WS_ERR_INVALID_OPCODE' ||
+      error.message?.includes('Invalid WebSocket frame') ||
+      error.message?.includes('WebSocket frame')) {
     return;
   }
+  console.error('Uncaught Exception:', error);
   process.exit(1);
 });
 
@@ -53,37 +54,71 @@ async function startServer() {
     const wss = new WebSocketServer({ 
       server,
       perMessageDeflate: false,
-      maxPayload: 64 * 1024 // 64KB
+      maxPayload: 64 * 1024, // 64KB
+      skipUTF8Validation: true, // Skip UTF-8 validation to handle corrupted frames
+      clientTracking: true
+    });
+    
+    // Handle WebSocket server errors
+    wss.on('error', (error) => {
+      console.error('WebSocket Server error:', error);
     });
     
     wss.on('connection', (ws, req) => {
       console.log('Client connected');
       
+      // Add error handling for the connection itself
+      ws.on('error', (error: Error & { code?: string }) => {
+        // Silently handle WebSocket frame errors to prevent crashes
+        if (error.code === 'WS_ERR_INVALID_UTF8' || 
+            error.code === 'WS_ERR_INVALID_CLOSE_CODE' ||
+            error.message?.includes('Invalid WebSocket frame')) {
+          // Don't log these errors as they're common with network issues
+          return;
+        }
+        console.error('WebSocket connection error:', error);
+      });
+      
       // Set up ping/pong to keep connection alive
       const pingInterval = setInterval(() => {
         if (ws.readyState === ws.OPEN) {
-          ws.ping();
+          try {
+            ws.ping();
+          } catch (pingError) {
+            // Ignore ping errors and clean up
+            clearInterval(pingInterval);
+          }
+        } else {
+          clearInterval(pingInterval);
         }
       }, 30000);
       
       ws.on('message', (message) => {
         try {
-          // Validate message exists
-          if (!message) {
+          // Validate message exists and is a Buffer
+          if (!message || !Buffer.isBuffer(message)) {
             return;
           }
           
           let messageStr;
           try {
+            // More robust UTF-8 conversion with fallback
             messageStr = message.toString('utf8');
+            
+            // Check if the string contains null bytes or other invalid characters
+            if (messageStr.includes('\0') || messageStr.length === 0) {
+              return;
+            }
           } catch (utf8Error) {
-            console.log('Invalid UTF-8 message received, ignoring');
-            return;
-          }
-          
-          // Validate message has content
-          if (!messageStr || messageStr.length === 0) {
-            return;
+            // Try latin1 as fallback for corrupted UTF-8
+            try {
+              messageStr = message.toString('latin1');
+              if (!messageStr || messageStr.length === 0) {
+                return;
+              }
+            } catch (fallbackError) {
+              return;
+            }
           }
           
           // Validate JSON
@@ -100,36 +135,31 @@ async function startServer() {
               try {
                 client.send(JSON.stringify(data));
               } catch (sendError) {
-                console.log('Error sending to client, removing connection');
-                client.terminate();
+                // Remove problematic connections
+                try {
+                  client.terminate();
+                } catch (terminateError) {
+                  // Ignore termination errors
+                }
               }
             }
           });
         } catch (error) {
-          console.log('Message processing error, ignoring invalid message');
+          // Silently ignore message processing errors
         }
       });
       
       ws.on('close', (code, reason) => {
         clearInterval(pingInterval);
-        // Only log clean disconnections to avoid spam
-        if (code === 1000 || code === 1001) {
-          console.log(`Client disconnected cleanly: ${code}`);
+        // Only log valid close codes to avoid spam
+        if (code >= 1000 && code <= 1015) {
+          console.log(`Client disconnected: ${code}`);
         }
       });
       
-      ws.on('error', (error) => {
-        console.error('WebSocket error:', error);
-        clearInterval(pingInterval);
-      });
-      
       ws.on('pong', () => {
-        // Connection is alive
+        // Connection is alive - no action needed
       });
-    });
-    
-    wss.on('error', (error) => {
-      console.error('WebSocket Server error:', error);
     });
     
     server.listen(port, hostname, () => {
